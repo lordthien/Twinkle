@@ -1,21 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { Component } from "react";
+import { View, SafeAreaView, Platform, Button } from "react-native";
+import * as Font from "expo-font";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+import Login from "./code/SignInTwinkle/Login";
+import SignUp from "./code/SignInTwinkle/SignUpTwinkle/SignUp";
+import OTP from "./code/SignInTwinkle/OTPAuthen/OTP";
+import PasswordRecovery from "./code/SignInTwinkle/PasswordRecovery/PasswordRecovery";
+import ResetPassword from "./code/SignInTwinkle/PasswordRecovery/ResetPassword";
+import ResetPasswordComplete from "./code/SignInTwinkle/PasswordRecovery/ResetPasswordComplete";
+
+import Home01 from "./code/Home/Home01";
+import HomeBarber from "./code/Home/HomeBarber";
+import Book from "./code/Home/Book";
+
+import AppNavigator from "./AppNavigator";
+
+class App extends Component {
+  render() {
+    // return <AppNavigator />
+    return (
+      <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
+        <View
+          style={{
+            minWidth: 375,
+            minHeight: Platform.OS === "web" ? 812 : null,
+          }}
+        >
+          {/* <Login /> */}
+          {/* <SignUp /> */}
+          {/* <OTP /> */}
+          {/* <PasswordRecovery /> */}
+          {/* <ResetPassword /> */}
+          {/* <ResetPasswordComplete /> */}
+          {/* <Home01 /> */}
+          {/* <HomeBarber /> */}
+          <Book />
+
+          {/* <Text /> */}
+        </View>
+      </SafeAreaView>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
