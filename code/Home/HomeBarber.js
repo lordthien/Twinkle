@@ -34,7 +34,6 @@ function HomeBarber({ navigation }) {
             name="left"
             size={24}
             color="black"
-            // onPress={navigation.navigate("Home01")}
             onPress={() => {
               navigation.navigate("Home01");
             }}
@@ -110,6 +109,7 @@ function HomeBarber({ navigation }) {
       {/* -------------------------------------------------------------- */}
       <View style={styles.bottomContainer}>
         <BookNow
+          title="Book Now"
           onPress={() => {
             navigation.navigate("Book");
           }}
@@ -128,7 +128,6 @@ const styles = StyleSheet.create({
   headerContainer: {
     height: 43,
     width: 255,
-    // justifyContent: "flex-start",
   },
 
   iconContainer: {
@@ -191,13 +190,13 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   bottomContainer: {
+    flex: 1,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
   },
 
   boxContainer: {
-    flex: 1,
     backgroundColor: "#ecf0f1",
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,

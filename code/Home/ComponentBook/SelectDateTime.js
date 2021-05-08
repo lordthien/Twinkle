@@ -8,23 +8,18 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { Ionicons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { SimpleLineIcons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-
 import ChooseBarberStylist from "./ChooseBarberStylist";
 import Time from "./Time";
 import DateTime from "./DateTime";
 import MonthYear from "./MonthYear";
-import Block from "../Component/Block";
+import BoxServiceSelect from "./BoxServiceSelect";
+import MaterialTopTabNavigator from "../../TabNavigators/MaterialTopTabNavigator";
 
-export default function SelectDateTime({}) {
+export default function SelectDateTime({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.textHeader}>
+        <View style={styles.textHeader1}>
           <Text style={styles.text}>Select Date & Time</Text>
         </View>
         <View style={styles.boxDateTime}>
@@ -34,40 +29,10 @@ export default function SelectDateTime({}) {
         <View style={styles.boxTime}>
           <Time />
         </View>
-        <View style={styles.textHeader}>
-          <Text style={styles.text}>Services</Text>
-        </View>
-        {/* -------------------------------------------------------------- */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.blockContainer}
-        >
-          <Block
-            icon={<Ionicons name="cut-outline" size={30} color="black" />}
-            text="Hair Cut"
-          />
-          <Block
-            icon={<MaterialCommunityIcons name="hair-dryer-outline" size={30} color="black" />}
-            text="Blow-dry"
-          />
-          <Block
-            icon={
-              <SimpleLineIcons name="user-female" size={30} color="black" />
-            }
-            text="Styling"
-          />
-          <Block
-            icon={<FontAwesome5 name="broom" size={24} color="black" />}
-            text="Coloring"
-          />
-          <Block
-            icon={<Entypo name="grid" size={40} color="black" />}
-            text="More"
-          />
-        </ScrollView>
-        {/* -------------------------------------------------------------- */}
-        <View style={styles.textHeader}>
+
+        {/* <BoxServiceSelect /> */}
+
+        <View style={styles.textHeader1}>
           <Text style={styles.text}>Choose Barber Stylist</Text>
         </View>
         <View style={{ flex: 1 }}>
@@ -85,8 +50,12 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
   },
-  textHeader: {
+  textHeader1: {
     padding: 16,
+  },
+  textHeader2: {
+    marginLeft: 12,
+    marginTop: 12,
   },
   text: {
     fontSize: 16,
@@ -121,6 +90,17 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
+    marginLeft: 12,
+    borderRadius: 8,
+  },
+  boxTime2: {
+    flexDirection: "row",
+    marginTop: 12,
+    height: 64,
+    width: 350,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "flex-start",
     marginLeft: 12,
     borderRadius: 8,
   },

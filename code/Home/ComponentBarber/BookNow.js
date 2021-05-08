@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 
-function BookNow({onPress}) {
+function BookNow({ onPress, title }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
@@ -12,7 +12,7 @@ function BookNow({onPress}) {
           style={{ borderRadius: 16 }}
         >
           <View style={styles.bookContainer}>
-            <Text>Book Now</Text>
+            <Text>{title}</Text>
           </View>
         </LinearGradient>
       </TouchableOpacity>

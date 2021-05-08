@@ -15,8 +15,10 @@ import { AntDesign } from "@expo/vector-icons";
 
 import BookNow from "./ComponentBarber/BookNow";
 import SelectDateTime from "./ComponentBook/SelectDateTime";
+import HomeBarber from "./HomeBarber";
+import MaterialTopTabNavigator from "../TabNavigators/MaterialTopTabNavigator";
 
-function HomeBarber({ navigation }) {
+function Book({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -38,8 +40,9 @@ function HomeBarber({ navigation }) {
       {/* -------------------------------------------------------------- */}
       <View style={styles.bottomContainer}>
         <BookNow
+          title="Book Now"
           onPress={() => {
-            navigation.navigate("Home01");
+            navigation.navigate("MaterialTopTabNavigator");
           }}
         />
       </View>
@@ -77,4 +80,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-export default HomeBarber;
+export default Book;

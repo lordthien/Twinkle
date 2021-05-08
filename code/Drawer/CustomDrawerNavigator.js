@@ -1,11 +1,6 @@
 import * as React from "react";
 import { Feather as Icon } from "@expo/vector-icons";
-import {
-  createDrawerNavigator,
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Menu1Screen from "./screens/Menu1Screen";
 import Menu2Screen from "./screens/Menu2Screen";
