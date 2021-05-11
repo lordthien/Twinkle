@@ -1,7 +1,14 @@
 #
+
 # **Twinkle Aplication**
+
 ---
-## ***Build expo:***
+**Khuyên nên cài đặt với yarn**
+
+---
+
+## **_Build expo:_**
+
 ---
 
 - **Bước 0:**
@@ -38,20 +45,22 @@ expo start
   ```
   expo install expo-linear-gradient
   ```
+
 ---
+
 ---
-## ***Setup Core:***
+
+## **_Setup Core:_**
+
 ---
+
 **1. Step 1 (Core):**
-
-  ```
-  npm install @react-navigation/native
-  ```
-
-- OR
-
 ```
 yarn add @react-navigation/native
+```
+- OR
+```
+npm install @react-navigation/native
 ```
 
 **2. Step 2 (Expo):**
@@ -61,27 +70,37 @@ expo install react-native-gesture-handler react-native-reanimated react-native-s
 ```
 
 **3. Setup for Stack:**
-
+```
+yarn add @react-navigation/stack
+```
+- OR
 ```
 npm install @react-navigation/stack
 ```
 
-- OR
+**4. Cài đặt create Drawer navigation:**
 
 ```
-yarn add @react-navigation/stack
+yarn add @react-navigation/drawer
 ```
 
-**4. Cài đặt Tab navigation:**
+**5. Cài đặt create Bottom Tab navigation:**
 
 ```
 yarn add @react-navigation/bottom-tabs
 ```
 
-**5. Cài đặt Drawer navigation:**
+**6. Cài đặt create **Material** Top Tab Navigator:**
 
 ```
-yarn add @react-navigation/drawer
+yarn add @react-navigation/material-top-tabs react-native-tab-view@^2.16.0
+```
+
+**7. Cài đặt create **Material** Bottom Tab Navigator:**
+
+```
+yarn add @react-navigation/material-bottom-tabs react-native-paper
 ```
 ---
+
 ---
