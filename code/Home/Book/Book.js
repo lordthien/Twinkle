@@ -13,10 +13,10 @@ import {
 
 import { AntDesign } from "@expo/vector-icons";
 
-import BookNow from "./ComponentBarber/BookNow";
-import SelectDateTime from "./ComponentBook/SelectDateTime";
-import HomeBarber from "./HomeBarber";
-import MaterialTopTabNavigator from "../TabNavigators/MaterialTopTabNavigator";
+// import BookNow from "./ComponentBarber/BookNow";
+// import SelectDateTime from "../ComponentBook/SelectDateTime";
+import BookNow from "../Barber/ComponentBarber/BookNow";
+import SelectDateTime from "../Book/ComponentBook/SelectDateTime";
 
 function Book({ navigation }) {
   return (

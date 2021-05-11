@@ -20,8 +20,8 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 
 import Name from "./ComponentBarber/Name";
-import Block from "./Component/Block";
-import TextHeader from "./Component/TextHeader";
+import Block from "../Home/Component/Block";
+import TextHeader from "../Home/Component/TextHeader";
 import Gallery from "./ComponentBarber/Gallery";
 import BookNow from "./ComponentBarber/BookNow";
 
@@ -46,7 +46,7 @@ function HomeBarber({ navigation }) {
           <View>
             <Image
               style={styles.iconHeader}
-              source={require("../../assets/images/barber1.jpeg")}
+              source={require("../../../assets/images/barber1.jpeg")}
             />
             <View style={styles.nameBarberContainer}>
               <Name textName="Barber Shop Star" />

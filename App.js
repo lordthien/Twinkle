@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import { View, SafeAreaView, Platform} from "react-native";
+import { View, SafeAreaView, Platform } from "react-native";
 
 // import Login from "./code/SignInTwinkle/Login";
 // import SignUp from "./code/SignInTwinkle/SignUpTwinkle/SignUp";
@@ -9,18 +9,19 @@ import { View, SafeAreaView, Platform} from "react-native";
 // import ResetPassword from "./code/SignInTwinkle/PasswordRecovery/ResetPassword";
 // import ResetPasswordComplete from "./code/SignInTwinkle/PasswordRecovery/ResetPasswordComplete";
 
-// import Home01 from "./code/Home/Home01";
-// import HomeBarber from "./code/Home/HomeBarber";
-// import Book from "./code/Home/Book";
+import Home01 from "./code/Home/Home/Home01";
+import HomeBarber from "./code/Home/Barber/HomeBarber";
+import Book from "./code/Home/Book/Book";
+import MaterialTopTabNavigator from "./code/TabNavigators/MaterialTopTabNavigator";
 
-// import SelectDateTime from "./code/Home/ComponentBook/SelectDateTime";
-import InfoBook from "./code/Home/InfoBook";
+import SelectDateTime from "./code/Home/Book/ComponentBook/SelectDateTime";
+import InfoBook from "./code/Home/InfoBook/InfoBook";
 
 import AppNavigator from "./AppNavigator";
 
 class App extends Component {
   render() {
-    // return <AppNavigator />
+    return <AppNavigator />
     return (
       <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
         <View
@@ -35,15 +36,13 @@ class App extends Component {
           {/* <PasswordRecovery /> */}
           {/* <ResetPassword /> */}
           {/* <ResetPasswordComplete /> */}
+
           {/* <Home01 /> */}
           {/* <HomeBarber /> */}
           {/* <Book /> */}
-          {/* <SelectServiceCutHair /> */}
 
-          {/* <SelectDateTime /> */}
-          
-
-          {/* <Text /> */}
+          <SelectDateTime />
+          {/* <InfoBook /> */}
         </View>
       </SafeAreaView>
     );

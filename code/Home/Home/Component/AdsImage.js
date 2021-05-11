@@ -7,11 +7,11 @@ function AdsImage() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <Image
           style={styles.adsImage}
-          source={require("../../../assets/icon/ads1.png")}
+          source={require("../../../../assets/icon/ads1.png")}
         />
         <Image
           style={styles.adsImage}
-          source={require("../../../assets/icon/ads1.png")}
+          source={require("../../../../assets/icon/ads1.png")}
         />
       </ScrollView>
     </View>

@@ -33,6 +33,7 @@ const MaterialTopTabNavigator = () => {
         </TouchableOpacity>
       </View>
       <Tab.Navigator
+        // initialRouteName="More"
         tabBarPosition="top"
         tabBarOptions={{
           activeTintColor: ACTIVE_COLOR,
@@ -113,7 +114,7 @@ const MaterialTopTabNavigator = () => {
       </Tab.Navigator>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   tabButtonContainer: {

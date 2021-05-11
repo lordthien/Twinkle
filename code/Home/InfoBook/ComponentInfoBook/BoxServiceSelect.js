@@ -29,13 +29,13 @@ export default function BoxServiceSelect({ onPress }) {
 const styles = StyleSheet.create({
   boxTime2: {
     flexDirection: "row",
-    marginTop: 12,
+    // marginTop: 12,
     height: 64,
     width: 350,
-    backgroundColor: "white",
+    backgroundColor: "#ecf0f1",
     alignItems: "center",
     justifyContent: "flex-start",
-    marginLeft: 12,
+    //marginLeft: 12,
     borderRadius: 8,
   },
 });

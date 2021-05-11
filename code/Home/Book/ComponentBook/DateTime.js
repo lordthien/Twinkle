@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import dataDateTime from "./dataDateTime";
+import dataDateTime from "./dataTimeAndDateTime/dataDateTime";
 
 export default function Time() {
   const [selectedItem, setSelectedItem] = React.useState();
@@ -22,7 +22,6 @@ export default function Time() {
               : styles.buttonSalon
           }
           onPress={() => {
-            //onPress(onPress);
             setSelectedItem(index);
           }}
         >

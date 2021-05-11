@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View, FlatList, Image } from "react-native";
 
-import dataGalerry from "../Data/dataGalerry";
+import dataGalerry from "./Data/dataGalerry";
 
 function Gallery({}) {
   renderItem = ({ item, index }) => {

@@ -1,6 +1,6 @@
-const image1 = require("../../../assets/images/barber/loicho.png");
-const image2 = require("../../../assets/images/barber/barber2.jpeg");
-const image3 = require("../../../assets/images/barber/barber3.jpeg");
+const image1 = require("../../../../../assets/images/barber/loicho.png");
+const image2 = require("../../../../../assets/images/barber/barber2.jpeg");
+const image3 = require("../../../../../assets/images/barber/barber3.jpeg");
 
 const barber = [
   {

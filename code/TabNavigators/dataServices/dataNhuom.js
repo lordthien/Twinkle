@@ -2,7 +2,7 @@ const nhuom = [
     {
       id: 1,
       title: "Nhuộm Phủ Bạc Thảo Dược",
-      des: "Giúp tóc đen bóng, da đầu chắc khỏe, trẻ trung",
+      des: "Giúp tóc đen bóng, da đầu chắc       \nkhỏe, trẻ trung",
       price: "80K",
       time: "45 Phút",
     },

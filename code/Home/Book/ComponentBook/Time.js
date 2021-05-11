@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import dataTime from "./dataTime";
+import dataTime from "./dataTimeAndDateTime/dataTime";
 
 export default function Time() {
   const [selectedItem, setSelectedItem] = React.useState();

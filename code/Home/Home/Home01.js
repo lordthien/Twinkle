@@ -16,12 +16,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import TextHeader from "./Component/TextHeader";
-import Header from "./Component/Header";
-import Block from "./Component/Block";
-import AdsImage from "./Component/AdsImage";
-import BestSalon from "./Component/BestSalon";
-import Tabbar from "./Component/Tabbar";
+import TextHeader from "../Home/Component/TextHeader";
+import Header from "../Home/Component/Header";
+import Block from "../Home/Component/Block";
+import AdsImage from "../Home/Component/AdsImage";
+import BestSalon from "../Home/Component/BestSalon";
+import Tabbar from "../Home/Component/Tabbar";
 
 function Home01({ navigation }) {
   return (

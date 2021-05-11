@@ -12,8 +12,6 @@ import ChooseBarberStylist from "./ChooseBarberStylist";
 import Time from "./Time";
 import DateTime from "./DateTime";
 import MonthYear from "./MonthYear";
-import BoxServiceSelect from "./BoxServiceSelect";
-import MaterialTopTabNavigator from "../../TabNavigators/MaterialTopTabNavigator";
 
 export default function SelectDateTime({ navigation }) {
   return (
@@ -29,9 +27,6 @@ export default function SelectDateTime({ navigation }) {
         <View style={styles.boxTime}>
           <Time />
         </View>
-
-        {/* <BoxServiceSelect /> */}
-
         <View style={styles.textHeader1}>
           <Text style={styles.text}>Choose Barber Stylist</Text>
         </View>

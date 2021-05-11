@@ -9,8 +9,8 @@ import OTP from "../SignInTwinkle/OTPAuthen/OTP";
 import ResetPassword from "../SignInTwinkle/PasswordRecovery/ResetPassword";
 import ResetPasswordComplete from "../SignInTwinkle/PasswordRecovery/ResetPasswordComplete";
 // import Home01 from "../Home/Home01";
-import HomeBarber from "../Home/HomeBarber";
-import Book from "../Home/Book";
+import HomeBarber from "../Home/Barber/HomeBarber";
+import Book from "../Home/Book/Book";
 
 import CustomDrawerNavigator from "../Drawer/CustomDrawerNavigator";
 

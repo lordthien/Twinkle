@@ -16,7 +16,7 @@ function Header({onPress}) {
         <TouchableOpacity onPress={onPress}>
           <Image
             style={styles.iconHeader}
-            source={require("../../../assets/icon/avatar.jpeg")}
+            source={require("../../../../assets/icon/avatar.jpeg")}
           />
         </TouchableOpacity>
         <View style={styles.find}>

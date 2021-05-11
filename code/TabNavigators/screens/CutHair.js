@@ -10,23 +10,38 @@ import {
 } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import BookNow from "../../Home/ComponentBarber/BookNow";
-import dataCutHair from "../../Home/ComponentBook/dataServices/dataCutHair";
+
+import BookNow from "../../Home/Barber/ComponentBarber/BookNow";
+import dataCutHair from "../dataServices/dataCutHair";
 
 export default function CutHair({ navigation }) {
-  const [selectedItem, setSelectedItem] = React.useState(0);
+  const [selectedItem, setSelectedItem] = React.useState(false);
 
   const renderItem = ({ item, index }) => {
     return (
-      <SafeAreaView style={styles.midContainer}>
+      <TouchableOpacity
+        style={
+          selectedItem === index ? styles.midContainer : styles.midContainer
+        }
+        onPress={() => {
+          setSelectedItem(index);
+        }}
+      >
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.listContainer}>
             <TouchableOpacity style={styles.icon}>
               <MaterialCommunityIcons
-                style={selectedItem === index ? "white" : "black"}
-                name="checkbox-marked"
+                name={
+                  selectedItem === index
+                    ? "checkbox-marked"
+                    : "checkbox-blank-outline"
+                }
                 size={24}
+                color="black"
+                onPress={() => {
+                  let x = !selectedItem;
+                  setSelectedItem({ selectedItem: x });
+                }}
               />
             </TouchableOpacity>
             <View
@@ -48,7 +63,7 @@ export default function CutHair({ navigation }) {
           </View>
           {/* -------------------------------------------------------------- */}
         </ScrollView>
-      </SafeAreaView>
+      </TouchableOpacity>
     );
   };
 
@@ -98,6 +113,7 @@ const styles = StyleSheet.create({
   },
 
   icon: {
+    // backgroundColor: "green",
     justifyContent: "center",
     marginRight: 12,
   },

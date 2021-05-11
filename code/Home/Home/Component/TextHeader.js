@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 
- function TextHeader({text, textViewAll}) {
+function TextHeader({ text, textViewAll }) {
   return (
     <View style={styles.headerText}>
       <Text style={styles.textTopservice}>{text}</Text>

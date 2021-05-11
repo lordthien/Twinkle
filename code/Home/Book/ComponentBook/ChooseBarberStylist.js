@@ -1,13 +1,18 @@
 import React from "react";
-import { Text, StyleSheet, View, FlatList, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-
-import dataBestSalon from "../Data/dataBestSalon";
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 
 import { AntDesign } from "@expo/vector-icons";
+import dataBarber from "./dataBarber/dataBarber";
 
-function BestSalon({onPress}) {
-  const [selectedItem, setSelectedItem] = React.useState(0);
+export default function ChooseBarber() {
+  const [selectedItem, setSelectedItem] = React.useState();
 
   const renderItem = ({ item, index }) => {
     return (
@@ -18,11 +23,11 @@ function BestSalon({onPress}) {
             : styles.buttonSalon
         }
         onPress={() => {
-          onPress(onPress);
           setSelectedItem(index);
         }}
       >
         <Image source={item.imageUrl} style={styles.imageSalon} />
+
         <View style={styles.textContainer}>
           <Text
             style={
@@ -35,9 +40,7 @@ function BestSalon({onPress}) {
           </Text>
           <Text
             style={
-              selectedItem === index
-                ? styles.textSalonSelected
-                : styles.textSalon
+              selectedItem === index ? styles.textSalonSelected : styles.textSalon
             }
           >
             {item.star}{" "}
@@ -45,35 +48,23 @@ function BestSalon({onPress}) {
               <AntDesign
                 style={selectedItem === index ? "white" : "black"}
                 name="staro"
-                size={18}
+                size={16}
               />
             }
-          </Text>
-        </View>
-        <View style={styles.streetContainer}>
-          <Text
-            style={
-              selectedItem === index
-                ? styles.textStreetSelected
-                : styles.textStreet
-            }
-          >
-            {item.street}
           </Text>
         </View>
       </TouchableOpacity>
     );
   };
-
   return (
     <View style={styles.container}>
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={dataBestSalon}
+        data={dataBarber}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "bestsalon-" + item.id;
+          return "barber-" + item.id;
         }}
       />
     </View>
@@ -86,10 +77,9 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     marginRight: 12,
   },
-
   buttonSalonSelected: {
     height: 200,
-    width: 290,
+    width: 150,
     borderRadius: 12,
     backgroundColor: "#bdc3c7",
     marginRight: 16,
@@ -98,7 +88,7 @@ const styles = StyleSheet.create({
   },
   buttonSalon: {
     height: 200,
-    width: 290,
+    width: 150,
     borderRadius: 12,
     backgroundColor: "#ecf0f1",
     marginRight: 16,
@@ -108,43 +98,30 @@ const styles = StyleSheet.create({
 
   imageSalon: {
     height: 140,
-    width: 290,
+    width: 150,
     borderRadius: 12,
   },
 
   textSalon: {
     color: "black",
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 14,
+    marginLeft: 6,
+    marginRight: 4,
   },
   textSalonSelected: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 18,
-  },
-
-  textStreet: {
-    color: "black",
-    fontWeight: "400",
-  },
-  textStreetSelected: {
-    color: "white",
-    fontWeight: "400",
+    fontSize: 14,
+    marginLeft: 6,
+    marginRight: 4,
   },
 
   textContainer: {
     flex: 1,
-    width: 260,
+    width: 150,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
-  streetContainer: {
-    flex: 1,
-    width: 260,
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-  },
 });
-
-export default BestSalon;
