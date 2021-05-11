@@ -2,7 +2,7 @@ import React from "react";
 
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Login from "../SignInTwinkle/Login";
+import Login from "../SignInTwinkle/SignIn/Login";
 import SignUp from "../SignInTwinkle/SignUpTwinkle/SignUp";
 import PasswordRecovery from "../SignInTwinkle/PasswordRecovery/PasswordRecovery";
 import OTP from "../SignInTwinkle/OTPAuthen/OTP";

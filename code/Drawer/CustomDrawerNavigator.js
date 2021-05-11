@@ -5,7 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Menu1Screen from "./screens/Menu1Screen";
 import Menu2Screen from "./screens/Menu2Screen";
 import Home01 from "../Home/Home/Home01";
-import Login from "../SignInTwinkle/Login";
+import Login from "../SignInTwinkle/SignIn/Login";
 
 const Drawer = createDrawerNavigator();
 

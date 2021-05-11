@@ -10,15 +10,12 @@ import {
 import { Ionicons as Icon } from "@expo/vector-icons";
 import axios from "axios";
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-
-import Logo from "../../code/SignInTwinkle/Component/Logo";
-import Header from "./Component/Header";
-import MiddleInput from "./Component/MiddleInput";
-import SwitchButton from "./Component/SwitchButton";
-import GilroyText from "./Component/GilroyText";
-import Button from "../../code/SignInTwinkle/Component/Button";
+import Logo from "../Component/Logo";
+import Header from "../Component/Header";
+import MiddleInput from "../Component/MiddleInput";
+import SwitchButton from "../Component/SwitchButton";
+import GilroyText from "../Component/GilroyText";
+import Button from "../Component/Button";
 
 const url = "https://training.softech.cloud/api/users/login";
 
@@ -156,7 +153,7 @@ function Login({ navigation }) {
           image={
             <Image
               style={{ height: 16, width: 16 }}
-              source={require("../../assets/google-icon.png")}
+              source={require("../../../assets/google-icon.png")}
             />
           }
         />
