@@ -5,10 +5,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import CutHair from "./screens/CutHair";
-import Uon from "./screens/Uon";
-import Nhuom from "./screens/Nhuom";
-import More from "./screens/More";
+import CutHair from "./screensBook/CutHair";
+import Uon from "./screensBook/Uon";
+import Nhuom from "./screensBook/Nhuom";
+import More from "./screensBook/More";
 import { AntDesign } from "@expo/vector-icons";
 
 const Tab = createMaterialTopTabNavigator();
@@ -17,7 +17,7 @@ const ICON_SIZE = 24;
 const ACTIVE_COLOR = "#FF6C44";
 const INACTIVE_COLOR = "#898B9A";
 
-const MaterialTopTabNavigator = () => {
+const MaterialTopTab_Book = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.headerContainer}>
@@ -144,4 +144,4 @@ const styles = StyleSheet.create({
   },
   label: {},
 });
-export default MaterialTopTabNavigator;
+export default MaterialTopTab_Book;

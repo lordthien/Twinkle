@@ -12,9 +12,9 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import BookNow from "../../Home/Barber/ComponentBarber/BookNow";
-import dataCutHair from "../dataServices/dataCutHair";
+import dataUon from "../dataServices/dataUon";
 
-export default function CutHair({ navigation }) {
+export default function Uon({ navigation }) {
   const [selectedItem, setSelectedItem] = React.useState(false);
 
   const renderItem = ({ item, index }) => {
@@ -74,17 +74,17 @@ export default function CutHair({ navigation }) {
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={dataCutHair}
+        data={dataUon}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "cuthair-" + item.id;
+          return "uon-" + item.id;
         }}
       />
       <View style={styles.bottomContainer}>
         <BookNow
           title="Select"
           onPress={() => {
-            navigation.navigate("Home01");
+            navigation.navigate("InfoBook");
           }}
         />
       </View>
@@ -113,7 +113,6 @@ const styles = StyleSheet.create({
   },
 
   icon: {
-    // backgroundColor: "green",
     justifyContent: "center",
     marginRight: 12,
   },
@@ -155,7 +154,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   bottomContainer: {
-    flex: 0.5,
+    flex: 0.34,
     height: 50,
     justifyContent: "center",
     alignItems: "center",

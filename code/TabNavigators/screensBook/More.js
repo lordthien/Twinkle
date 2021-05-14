@@ -83,7 +83,7 @@ export default function FavouriteScreen({ navigation }) {
         <BookNow
           title="Select"
           onPress={() => {
-            navigation.navigate("Home01");
+            navigation.navigate("InfoBook");
           }}
         />
       </View>

@@ -12,7 +12,6 @@ import { View, SafeAreaView, Platform } from "react-native";
 import Home01 from "./code/Home/Home/Home01";
 import HomeBarber from "./code/Home/Barber/HomeBarber";
 import Book from "./code/Home/Book/Book";
-import MaterialTopTabNavigator from "./code/TabNavigators/MaterialTopTabNavigator";
 
 import SelectDateTime from "./code/Home/Book/ComponentBook/SelectDateTime";
 import InfoBook from "./code/Home/InfoBook/InfoBook";
@@ -37,12 +36,12 @@ class App extends Component {
           {/* <ResetPassword /> */}
           {/* <ResetPasswordComplete /> */}
 
-          {/* <Home01 /> */}
+          <Home01 />
           {/* <HomeBarber /> */}
           {/* <Book /> */}
 
-          <SelectDateTime />
           {/* <InfoBook /> */}
+
         </View>
       </SafeAreaView>
     );

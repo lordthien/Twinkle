@@ -17,6 +17,11 @@ import SwitchButton from "../Component/SwitchButton";
 import GilroyText from "../Component/GilroyText";
 import Button from "../Component/Button";
 
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
 const url = "https://training.softech.cloud/api/users/login";
 
 function Login({ navigation }) {
@@ -115,9 +120,6 @@ function Login({ navigation }) {
             titleColor="white"
             title="Sign In"
             onPress={onSignIn}
-            // onPress={() => {
-            //   navigation.navigate("Home01");
-            // }}
           />
         </View>
         {/* --------------------------------- */}

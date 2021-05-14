@@ -1,73 +1,112 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  SafeAreaView,
+  ScrollView,
+} from "react-native";
 
 import TextHeaderInfo from "./ComponentInfoBook/TextHeaderInfo";
 import BookNow from "../Barber/ComponentBarber/BookNow";
 import BoxServiceSelect from "./ComponentInfoBook/BoxServiceSelect";
+// import CutHair from "../../TabNavigators/screensBook/CutHair";
+// import Time from "../Book/ComponentBook/Time";
 
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-function InfoBook() {
+function InfoBook({ navigation }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.text}>Thông Tin Đặt Lịch</Text>
       </View>
-      <View style={styles.textHeader}>
-        <TextHeaderInfo title="1. SALON SELECTED" />
+      <ScrollView>
+        <View style={styles.textHeader}>
+          <TextHeaderInfo title="1. SALON SELECTED" />
 
-        <View style={styles.salonSelectContainer}>
-          <Ionicons
-            style={{ marginLeft: 12, marginRight: 12 }}
-            name="home-outline"
-            size={24}
-            color="black"
-          />
-          <Text style={styles.text}>Barber A Loi</Text>
+          <View style={styles.salonSelectContainer}>
+            <Ionicons
+              style={{ marginLeft: 12, marginRight: 12 }}
+              name="home-outline"
+              size={24}
+              color="black"
+            />
+            <Text style={styles.text}>Barber A Loi</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.textHeader}>
-        <TextHeaderInfo title="2. SERVICED" />
-        <BoxServiceSelect />
-        <View style={styles.boxTime}></View>
-      </View>
-
-      <View style={styles.textHeader}>
-        <TextHeaderInfo title="3. TIMED" />
-        <View style={styles.salonSelectContainer}>
-          <FontAwesome
-            style={{ marginLeft: 12, marginRight: 12 }}
-            name="calendar-times-o"
-            size={24}
-            color="black"
-          />
-          <Text style={styles.text}>14:00 PM</Text>
+        <View style={styles.textHeader}>
+          <TextHeaderInfo title="2. SERVICED" />
+          <BoxServiceSelect />
+          <View style={styles.boxTime}>
+            {/* nhan du lieu dich vu da chon */}
+          </View>
         </View>
-      </View>
 
-      <View style={styles.textHeader}>
-        <TextHeaderInfo title="4. NOTES" />
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.inputText}
-            placeholder={"VD: Anh đi 3 người/ Anh đi cùng con"}
-            // onChangeText={(text) => {
-            //   onChangeText(text);
-            // }}
-          />
+        <View style={styles.textHeader}>
+          <TextHeaderInfo title="3. STYLIST" />
+          <View style={styles.salonSelectContainer}>
+            <MaterialCommunityIcons
+              style={{ marginLeft: 12, marginRight: 12 }}
+              name="human-greeting"
+              size={24}
+              color="black"
+            />
+            <Text style={styles.text}>Loi Cho</Text>
+          </View>
         </View>
-      </View>
+
+        <View style={styles.textHeader}>
+          <TextHeaderInfo title="4. DATE" />
+          <View style={styles.salonSelectContainer}>
+            <FontAwesome
+              style={{ marginLeft: 12, marginRight: 12 }}
+              name="calendar-times-o"
+              size={24}
+              color="black"
+            />
+            <Text style={styles.text}>4 - June - 2021</Text>
+            {/* <Text style={styles.text}>{<Time>{item.name}</Time>}</Text> */}
+          </View>
+        </View>
+
+        <View style={styles.textHeader}>
+          <TextHeaderInfo title="5. TIMED" />
+          <View style={styles.salonSelectContainer}>
+            <Ionicons
+              style={{ marginLeft: 12, marginRight: 12 }}
+              name="time-outline"
+              size={24}
+              color="black"
+            />
+            <Text style={styles.text}>14:00 PM</Text>
+            {/* <Text style={styles.text}>{<Time>{item.name}</Time>}</Text> */}
+          </View>
+        </View>
+
+        <View style={styles.textHeader}>
+          <TextHeaderInfo title="6. NOTES" />
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.inputText}
+              placeholder={"VD: Anh đi 3 người/ Anh đi cùng con"}
+            />
+          </View>
+        </View>
+      </ScrollView>
       <View style={styles.bottomContainer}>
         <BookNow
           title="COMPLETE"
           onPress={() => {
-            navigation.navigate("MaterialTopTabNavigator");
+            navigation.navigate("Home01");
           }}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -77,6 +116,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     marginTop: 12,
+    marginBottom: 8,
     marginLeft: 87,
     height: 40,
     width: 200,
@@ -86,7 +126,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   textHeader: {
-    marginTop: 12,
+    marginTop: 1,
     marginLeft: 12,
   },
   text: {
@@ -127,9 +167,8 @@ const styles = StyleSheet.create({
   },
 
   bottomContainer: {
-    flex: 1,
-    // backgroundColor: "green",
-    // marginTop: 180,
+    // flex: 1,
+    height: 60,
     justifyContent: "flex-end",
     alignItems: "center",
   },

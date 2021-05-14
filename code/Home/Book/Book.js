@@ -13,10 +13,11 @@ import {
 
 import { AntDesign } from "@expo/vector-icons";
 
-// import BookNow from "./ComponentBarber/BookNow";
-// import SelectDateTime from "../ComponentBook/SelectDateTime";
 import BookNow from "../Barber/ComponentBarber/BookNow";
 import SelectDateTime from "../Book/ComponentBook/SelectDateTime";
+
+import DateTime from "./ComponentBook/DateTime";
+import Time from "./ComponentBook/Time";
 
 function Book({ navigation }) {
   return (
@@ -37,6 +38,7 @@ function Book({ navigation }) {
       <View style={styles.timeContainer}>
         <SelectDateTime />
       </View>
+      {/* -------------------------------------------------------------- */}
       {/* -------------------------------------------------------------- */}
       <View style={styles.bottomContainer}>
         <BookNow

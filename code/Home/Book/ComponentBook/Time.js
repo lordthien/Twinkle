@@ -9,7 +9,7 @@ import {
 
 import dataTime from "./dataTimeAndDateTime/dataTime";
 
-export default function Time() {
+export default function Time({ name }) {
   const [selectedItem, setSelectedItem] = React.useState();
 
   const renderItem = ({ item, index }) => {
@@ -22,7 +22,6 @@ export default function Time() {
               : styles.buttonSalon
           }
           onPress={() => {
-            //onPress(onPress);
             setSelectedItem(index);
           }}
         >

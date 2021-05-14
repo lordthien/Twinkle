@@ -10,11 +10,11 @@ import {
 } from "react-native";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
-import BookNow from "../../Home/Barber/ComponentBarber/BookNow";
-import dataNhuom from "../dataServices/dataNhuom";
 
-export default function Nhuom({ navigation }) {
+import BookNow from "../../Home/Barber/ComponentBarber/BookNow";
+import dataCutHair from "../dataServices/dataCutHair";
+
+export default function CutHair({ navigation }) {
   const [selectedItem, setSelectedItem] = React.useState(false);
 
   const renderItem = ({ item, index }) => {
@@ -74,7 +74,7 @@ export default function Nhuom({ navigation }) {
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={dataNhuom}
+        data={dataCutHair}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
           return "cuthair-" + item.id;
@@ -84,7 +84,7 @@ export default function Nhuom({ navigation }) {
         <BookNow
           title="Select"
           onPress={() => {
-            navigation.navigate("Home01");
+            navigation.navigate("InfoBook");
           }}
         />
       </View>
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
   },
 
   icon: {
+    // backgroundColor: "green",
     justifyContent: "center",
     marginRight: 12,
   },
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     marginLeft: 12,
   },
   bottomContainer: {
-    flex: 0.46,
+    flex: 0.5,
     height: 50,
     justifyContent: "center",
     alignItems: "center",

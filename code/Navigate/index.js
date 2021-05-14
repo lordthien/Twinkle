@@ -11,23 +11,24 @@ import ResetPasswordComplete from "../SignInTwinkle/PasswordRecovery/ResetPasswo
 // import Home01 from "../Home/Home01";
 import HomeBarber from "../Home/Barber/HomeBarber";
 import Book from "../Home/Book/Book";
+import InfoBook from "../Home/InfoBook/InfoBook";
 
 import CustomDrawerNavigator from "../Drawer/CustomDrawerNavigator";
-
-import MaterialTopTabNavigator from "../TabNavigators/MaterialTopTabNavigator";
+import MaterialTopTab_Book from "../TabNavigators/MaterialTopTab_Book";
+import BottomTab_Home01 from "../TabNavigators/BottomTab_Home01";
 
 const Stack = createStackNavigator();
 
 export default function Navigate() {
   return (
     <Stack.Navigator /*headerMode="screen"*/>
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Home01"
         component={CustomDrawerNavigator}
         options={{
           headerShown: false,
         }}
-      /> */}
+      />
       <Stack.Screen
         name="Login"
         component={Login}
@@ -41,13 +42,13 @@ export default function Navigate() {
         }}
       />
       {/* ---------------------------- */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Home01"
         component={CustomDrawerNavigator}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
       {/* -------------------------- */}
       <Stack.Screen
         name="HomeBarber"
@@ -66,7 +67,14 @@ export default function Navigate() {
       {/* ------------- */}
       <Stack.Screen
         name="MaterialTopTabNavigator"
-        component={MaterialTopTabNavigator}
+        component={MaterialTopTab_Book}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="InfoBook"
+        component={InfoBook}
         options={{
           headerShown: false,
         }}

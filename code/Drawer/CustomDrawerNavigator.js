@@ -6,6 +6,7 @@ import Menu1Screen from "./screens/Menu1Screen";
 import Menu2Screen from "./screens/Menu2Screen";
 import Home01 from "../Home/Home/Home01";
 import Login from "../SignInTwinkle/SignIn/Login";
+import BottomTab_Home01 from "../TabNavigators/BottomTab_Home01";
 
 const Drawer = createDrawerNavigator();
 
@@ -21,8 +22,8 @@ const CustomDrawerNavigator = () => {
       }}
     >
       <Drawer.Screen
-        name="Home"
-        component={Home01}
+        name="BottomTab_Home01"
+        component={BottomTab_Home01}
         options={{
           title: "Home",
           drawerIcon: ({ color, size }) => (

@@ -33,6 +33,9 @@ export default function SelectDateTime({ navigation }) {
         <View style={{ flex: 1 }}>
           <ChooseBarberStylist />
         </View>
+
+        <Text>{Time.name}</Text>
+        
       </ScrollView>
     </SafeAreaView>
   );

@@ -7,7 +7,9 @@ import Navigate from "./code/Navigate";
 
 import CustomDrawerNavigator from "./code/Drawer/CustomDrawerNavigator";
 
-import MaterialTopTabNavigator from "./code/TabNavigators/MaterialTopTabNavigator";
+import MaterialTopTabNavigator from "./code/TabNavigators/MaterialTopTab_Book";
+
+import BottomTab_Home01 from "./code/TabNavigators/BottomTab_Home01";
 
 export default function AppNavigator() {
   return (
@@ -18,6 +20,7 @@ export default function AppNavigator() {
 
       {/* TAB NAVIGATORS */}
       {/* <MaterialTopTabNavigator /> */}
+      {/* <BottomTab_Home01 /> */}
     </NavigationContainer>
   );
 }
