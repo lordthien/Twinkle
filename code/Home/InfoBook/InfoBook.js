@@ -56,7 +56,8 @@ function InfoBook({ navigation }) {
               size={24}
               color="black"
             />
-            <Text style={styles.text}>Loi Cho</Text>
+            {/* <Text style={styles.text}>Loi Cho</Text> */}
+            <Text style={styles.text}>Duy Thanh</Text>
           </View>
         </View>
 

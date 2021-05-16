@@ -34,7 +34,7 @@ export default function SelectDateTime({ navigation }) {
           <ChooseBarberStylist />
         </View>
 
-        <Text>{Time.name}</Text>
+        {/* <Text>{Time.name}</Text> */}
         
       </ScrollView>
     </SafeAreaView>

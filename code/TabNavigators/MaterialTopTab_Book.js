@@ -126,11 +126,12 @@ const styles = StyleSheet.create({
   iconContainer: {
     height: 40,
     width: 40,
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#bdc3c787",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
     marginLeft: 12,
+    marginBottom: 4,
   },
 
   tabButton: {
