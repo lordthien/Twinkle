@@ -33,8 +33,8 @@ const Settings = ({ navigation }) => {
       <View>
         <BoxSetting />
       </View>
-
-      {/* <Button
+{/* 
+      <Button
         title="Open Menu"
         onPress={() => {
           navigation.openDrawer();

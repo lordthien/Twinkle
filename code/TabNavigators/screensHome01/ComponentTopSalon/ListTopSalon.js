@@ -2,11 +2,11 @@ import React from "react";
 import { Text, StyleSheet, View, FlatList, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-import dataBestSalon from "./Data/dataBestSalon";
+import dataBestSalon from "../../../Home/Home/Component/Data/dataBestSalon";
 
 import { AntDesign } from "@expo/vector-icons";
 
-function BestSalon({onPress}) {
+function BestSalon({ onPress }) {
   const [selectedItem, setSelectedItem] = React.useState(0);
 
   const renderItem = ({ item, index }) => {
@@ -68,8 +68,7 @@ function BestSalon({onPress}) {
   return (
     <View style={styles.container}>
       <FlatList
-        horizontal
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         data={dataBestSalon}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
@@ -89,26 +88,26 @@ const styles = StyleSheet.create({
 
   buttonSalonSelected: {
     height: 200,
-    width: 290,
+    width: 350,
     borderRadius: 12,
-    backgroundColor: "white",
-    marginRight: 16,
+    backgroundColor: "#bdc3c7",
+    marginTop: 12,
     justifyContent: "flex-start",
     alignItems: "center",
   },
   buttonSalon: {
     height: 200,
-    width: 290,
+    width: 350,
     borderRadius: 12,
     backgroundColor: "#ecf0f1",
-    marginRight: 16,
+    marginTop: 12,
     justifyContent: "flex-start",
     alignItems: "center",
   },
 
   imageSalon: {
     height: 140,
-    width: 290,
+    width: 350,
     borderRadius: 12,
   },
 
@@ -118,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   textSalonSelected: {
-    color: "#95a5a6",
+    color: "white",
     fontWeight: "bold",
     fontSize: 18,
   },
@@ -128,20 +127,20 @@ const styles = StyleSheet.create({
     fontWeight: "400",
   },
   textStreetSelected: {
-    color: "#95a5a6",
+    color: "white",
     fontWeight: "400",
   },
 
   textContainer: {
     flex: 1,
-    width: 260,
+    width: 310,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
   streetContainer: {
     flex: 1,
-    width: 260,
+    width: 310,
     justifyContent: "flex-start",
     alignItems: "flex-start",
   },

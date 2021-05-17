@@ -1,41 +1,36 @@
 import React from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, ScrollView } from "react-native";
 
 import ChooseBarberStylist from "./ChooseBarberStylist";
 import Time from "./Time";
 import DateTime from "./DateTime";
 import MonthYear from "./MonthYear";
 
-export default function SelectDateTime({ navigation }) {
+export default function SelectDateTime({ route }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.textHeader1}>
           <Text style={styles.text}>Select Date & Time</Text>
         </View>
+        {/* -------------------------------------------------------------- */}
         <View style={styles.boxDateTime}>
           <MonthYear />
           <DateTime />
         </View>
+        {/* -------------------------------------------------------------- */}
         <View style={styles.boxTime}>
           <Time />
         </View>
+        {/* -------------------------------------------------------------- */}
         <View style={styles.textHeader1}>
           <Text style={styles.text}>Choose Barber Stylist</Text>
         </View>
+        {/* -------------------------------------------------------------- */}
         <View style={{ flex: 1 }}>
           <ChooseBarberStylist />
         </View>
-
-        {/* <Text>{Time.name}</Text> */}
-        
+        {/* -------------------------------------------------------------- */}
       </ScrollView>
     </SafeAreaView>
   );

@@ -11,14 +11,14 @@ import {
 import TextHeaderInfo from "./ComponentInfoBook/TextHeaderInfo";
 import BookNow from "../Barber/ComponentBarber/BookNow";
 import BoxServiceSelect from "./ComponentInfoBook/BoxServiceSelect";
-// import CutHair from "../../TabNavigators/screensBook/CutHair";
-// import Time from "../Book/ComponentBook/Time";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-function InfoBook({ navigation }) {
+function InfoBook({ navigation, route }) {
+  console.log(route);
+  console.log("--------------");
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -43,7 +43,9 @@ function InfoBook({ navigation }) {
           <TextHeaderInfo title="2. SERVICED" />
           <BoxServiceSelect />
           <View style={styles.boxTime}>
-            {/* nhan du lieu dich vu da chon */}
+            {/* <Text>{route.params.day}</Text> */}
+            {/* <Text>{route.params.time}</Text> */}
+            {/* <Text>{route.params.stylist}</Text> */}
           </View>
         </View>
 
@@ -56,8 +58,8 @@ function InfoBook({ navigation }) {
               size={24}
               color="black"
             />
-            {/* <Text style={styles.text}>Loi Cho</Text> */}
-            <Text style={styles.text}>Duy Thanh</Text>
+            <Text style={styles.text}>Loi Cho</Text>
+            {/* <Text style={styles.text}>Duy Thanh</Text> */}
           </View>
         </View>
 
@@ -71,7 +73,6 @@ function InfoBook({ navigation }) {
               color="black"
             />
             <Text style={styles.text}>4 - June - 2021</Text>
-            {/* <Text style={styles.text}>{<Time>{item.name}</Time>}</Text> */}
           </View>
         </View>
 
@@ -85,7 +86,6 @@ function InfoBook({ navigation }) {
               color="black"
             />
             <Text style={styles.text}>14:00 PM</Text>
-            {/* <Text style={styles.text}>{<Time>{item.name}</Time>}</Text> */}
           </View>
         </View>
 
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "500",
   },
-
   boxTime: {
     backgroundColor: "#ecf0f1",
     height: 56,
@@ -142,7 +141,6 @@ const styles = StyleSheet.create({
     marginRight: 12,
     borderRadius: 8,
   },
-
   salonSelectContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -151,7 +149,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginRight: 12,
   },
-
   inputContainer: {
     height: 56,
     flexDirection: "row",
@@ -166,9 +163,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#898B9A",
   },
-
   bottomContainer: {
-    // flex: 1,
     height: 60,
     justifyContent: "flex-end",
     alignItems: "center",

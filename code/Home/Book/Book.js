@@ -1,25 +1,11 @@
 import React from "react";
-import {
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  SafeAreaView,
-  FlatList,
-  ScrollView,
-} from "react-native";
-
+import { StyleSheet, View, TouchableOpacity, SafeAreaView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 import BookNow from "../Barber/ComponentBarber/BookNow";
 import SelectDateTime from "../Book/ComponentBook/SelectDateTime";
 
-import DateTime from "./ComponentBook/DateTime";
-import Time from "./ComponentBook/Time";
-
-function Book({ navigation }) {
+function Book({ navigation, route }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -39,12 +25,15 @@ function Book({ navigation }) {
         <SelectDateTime />
       </View>
       {/* -------------------------------------------------------------- */}
-      {/* -------------------------------------------------------------- */}
       <View style={styles.bottomContainer}>
         <BookNow
           title="Book Now"
           onPress={() => {
-            navigation.navigate("MaterialTopTabNavigator");
+            navigation.navigate("MaterialTopTabNavigator", {
+              // day: "8",
+              // time: '11:00 AM',
+              // stylist: "Loi Cho",
+            });
           }}
         />
       </View>
@@ -57,12 +46,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   headerContainer: {
     height: 43,
     width: 255,
   },
-
   iconContainer: {
     height: 40,
     width: 40,
@@ -75,7 +62,6 @@ const styles = StyleSheet.create({
   timeContainer: {
     flex: 1,
   },
-
   bottomContainer: {
     height: 50,
     justifyContent: "center",

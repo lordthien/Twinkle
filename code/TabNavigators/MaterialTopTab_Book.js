@@ -3,13 +3,17 @@ import { StyleSheet, View, TouchableOpacity, SafeAreaView } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import CutHair from "./screensBook/CutHair";
 import Uon from "./screensBook/Uon";
 import Nhuom from "./screensBook/Nhuom";
 import More from "./screensBook/More";
-import { AntDesign } from "@expo/vector-icons";
+
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -61,8 +65,8 @@ const MaterialTopTab_Book = ({ navigation }) => {
           options={{
             title: "Cut Hair",
             tabBarIcon: ({ focused, color }) => (
-              <Icon
-                name={focused ? "home" : "home-outline"}
+              <Ionicons 
+                name={focused ? "cut" : "cut-outline"} 
                 size={ICON_SIZE}
                 color={color}
               />
@@ -75,8 +79,8 @@ const MaterialTopTab_Book = ({ navigation }) => {
           options={{
             title: "Uốn",
             tabBarIcon: ({ focused, color }) => (
-              <Icon
-                name={focused ? "cart" : "cart-outline"}
+              <SimpleLineIcons
+                name={focused ? "user-female" : "user-female"}
                 size={ICON_SIZE}
                 color={color}
               />
@@ -89,8 +93,8 @@ const MaterialTopTab_Book = ({ navigation }) => {
           options={{
             title: "Nhuộm",
             tabBarIcon: ({ focused, color }) => (
-              <Icon
-                name={focused ? "cart" : "cart-outline"}
+              <FontAwesome5
+                name={focused ? "broom" : "broom"}
                 size={ICON_SIZE}
                 color={color}
               />
@@ -103,8 +107,8 @@ const MaterialTopTab_Book = ({ navigation }) => {
           options={{
             title: "More",
             tabBarIcon: ({ focused, color }) => (
-              <Icon
-                name={focused ? "heart" : "heart-outline"}
+              <Ionicons
+                name={focused ? "ios-grid" : "ios-grid-outline"}
                 size={ICON_SIZE}
                 color={color}
               />

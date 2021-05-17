@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  StyleSheet,
-  SafeAreaView,
-} from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import { Feather as Feather } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home01 from "../Home/Home/Home01";
-import FavouriteScreen from "./screensHome01/FavouriteScreen";
+import TopSalonScreen from "./screensHome01/TopSalonScreen";
 import CartScreen from "./screensHome01/CartScreen";
 import NotificationScreen from "./screensHome01/NotificationScreen";
 
@@ -89,19 +84,29 @@ export default function BottomTab_Home01() {
           }}
         />
         <Tab.Screen
-          name="FavouriteScreen"
-          component={FavouriteScreen}
+          name="TopSalonScreen"
+          component={TopSalonScreen}
           options={{
             tabBarIcon: ({ focused, color, size }) => {
               if (focused) {
                 return (
                   <View style={styles.tabButton}>
-                    <Feather name="heart" size={size * 0.8} color="white" />
-                    <Text style={styles.label}>Fav</Text>
+                    <Ionicons
+                      name="medal-outline"
+                      size={size * 0.8}
+                      color="white"
+                    />
+                    <Text style={styles.label}>Top</Text>
                   </View>
                 );
               } else {
-                return <Feather name="heart" size={size * 0.8} color={color} />;
+                return (
+                  <Ionicons
+                    name="medal-outline"
+                    size={size * 0.8}
+                    color={color}
+                  />
+                );
               }
             },
           }}

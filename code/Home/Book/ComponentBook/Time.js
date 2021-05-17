@@ -9,7 +9,7 @@ import {
 
 import dataTime from "./dataTimeAndDateTime/dataTime";
 
-export default function Time({ name }) {
+export default function Time({ route }) {
   const [selectedItem, setSelectedItem] = React.useState();
 
   const renderItem = ({ item, index }) => {

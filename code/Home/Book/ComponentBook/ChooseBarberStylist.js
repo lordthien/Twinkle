@@ -11,8 +11,9 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import dataBarber from "./dataBarber/dataBarber";
 
-export default function ChooseBarber() {
+export default function ChooseBarber({route}) {
   const [selectedItem, setSelectedItem] = React.useState();
+  // const [selectedItem, setSelectedItem] = React.useState(route.params.index);
 
   const renderItem = ({ item, index }) => {
     return (
@@ -24,6 +25,7 @@ export default function ChooseBarber() {
         }
         onPress={() => {
           setSelectedItem(index);
+          // route.params.selectedItem(index);
         }}
       >
         <Image source={item.imageUrl} style={styles.imageSalon} />
