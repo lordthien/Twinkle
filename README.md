@@ -31,7 +31,7 @@
 
 ---
 
-## **_Build expo:_**
+## **_B. Build expo:_**
 
 ---
 
@@ -74,7 +74,7 @@ expo start
 
 ---
 
-## **_Setup Core:_**
+## **_C. Setup Core:_**
 
 ---
 
