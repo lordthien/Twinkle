@@ -42,11 +42,7 @@ function InfoBook({ navigation, route }) {
         <View style={styles.textHeader}>
           <TextHeaderInfo title="2. SERVICED" />
           <BoxServiceSelect />
-          <View style={styles.boxTime}>
-            {/* <Text>{route.params.day}</Text> */}
-            {/* <Text>{route.params.time}</Text> */}
-            {/* <Text>{route.params.stylist}</Text> */}
-          </View>
+          <View style={styles.boxTime}></View>
         </View>
 
         <View style={styles.textHeader}>
@@ -59,7 +55,6 @@ function InfoBook({ navigation, route }) {
               color="black"
             />
             <Text style={styles.text}>Loi Cho</Text>
-            {/* <Text style={styles.text}>Duy Thanh</Text> */}
           </View>
         </View>
 

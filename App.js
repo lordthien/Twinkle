@@ -21,30 +21,6 @@ import AppNavigator from "./AppNavigator";
 class App extends Component {
   render() {
     return <AppNavigator />
-    return (
-      <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
-        <View
-          style={{
-            minWidth: 375,
-            minHeight: Platform.OS === "web" ? 812 : null,
-          }}
-        >
-          {/* <Login /> */}
-          {/* <SignUp /> */}
-          {/* <OTP /> */}
-          {/* <PasswordRecovery /> */}
-          {/* <ResetPassword /> */}
-          {/* <ResetPasswordComplete /> */}
-
-          <Home01 />
-          {/* <HomeBarber /> */}
-          {/* <Book /> */}
-
-          {/* <InfoBook /> */}
-
-        </View>
-      </SafeAreaView>
-    );
   }
 }
 

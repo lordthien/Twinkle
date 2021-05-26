@@ -1,13 +1,8 @@
 import React from "react";
 import {
-  Text,
   StyleSheet,
   View,
-  TextInput,
-  TouchableOpacity,
-  Image,
   SafeAreaView,
-  FlatList,
   ScrollView,
 } from "react-native";
 
@@ -21,7 +16,6 @@ import Header from "../Home/Component/Header";
 import Block from "../Home/Component/Block";
 import AdsImage from "../Home/Component/AdsImage";
 import BestSalon from "../Home/Component/BestSalon";
-import Tabbar from "../Home/Component/Tabbar";
 
 function Home01({ navigation }) {
   return (

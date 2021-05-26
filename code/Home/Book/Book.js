@@ -30,9 +30,6 @@ function Book({ navigation, route }) {
           title="Book Now"
           onPress={() => {
             navigation.navigate("MaterialTopTabNavigator", {
-              // day: "8",
-              // time: '11:00 AM',
-              // stylist: "Loi Cho",
             });
           }}
         />
