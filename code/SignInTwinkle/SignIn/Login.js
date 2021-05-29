@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Ionicons as Icon } from "@expo/vector-icons";
 import axios from "axios";
+import * as Facebook from 'expo-facebook'
 
 import Logo from "../Component/Logo";
 import Header from "../Component/Header";
@@ -22,7 +23,34 @@ function validateEmail(email) {
   return re.test(String(email).toLowerCase());
 }
 
-const url = "https://training.softech.cloud/api/users/login";
+async function logInFacebook() {
+  try {
+    await Facebook.initializeAsync({
+      appId: '537314884344603',
+    });
+    const {
+      type,
+      token,
+      expirationDate,
+      permissions,
+      declinedPermissions,
+    } = await Facebook.logInWithReadPermissionsAsync({
+      permissions: ['public_profile'],
+    });
+    if (type === 'success') {
+      // Get the user's name using Facebook's Graph API
+      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+      Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
+    } else {
+      // type === 'cancel'
+    }
+  } catch (error) {
+    console.log(error)
+    alert(`Facebook Login Error: ${error.message}`);
+  }
+}
+
+const url = "http://149.28.137.174:5000/app/login";
 
 function Login({ navigation }) {
   const [email, setEmail] = React.useState("");
@@ -34,6 +62,7 @@ function Login({ navigation }) {
       email: email,
       password: password,
     };
+    console.log(data, url)
     axios
       .post(url, data)
       .then((response) => {
@@ -141,6 +170,7 @@ function Login({ navigation }) {
       <View style={styles.bottomContainer}>
         {/* FACEBOOK LOGIN */}
         <Button
+          onPress={logInFacebook}
           color="#0064C0"
           titleColor="white"
           title="Continue With Facebook"

@@ -24,11 +24,11 @@ import Button from "../Component/Button";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-const url = "https://training.softech.cloud/api/users/register";
+const url = "http://149.28.137.174:5000/app/signup";
 
 function SignUp({ navigation }) {
   const [email, setEmail] = React.useState("");
-  const [user, setUser] = React.useState("");
+  const [name, setName] = React.useState("");
   const [password, setPassword] = React.useState("");
   //ngocthien@gmail.com
   //123456789
@@ -36,11 +36,17 @@ function SignUp({ navigation }) {
   const onSignUp = () => {
     const data = {
       email: email,
-      user: user,
+      name: name,
       password: password,
     };
-    axios
-      .post(url, data)
+    fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
       .then((response) => {
         console.log(JSON.stringify(response.data));
         console.log("--------------------------------");
@@ -96,13 +102,13 @@ function SignUp({ navigation }) {
             }}
           />
           {/* ------------------------------- */}
-          {/* User Name */}
+          {/* User's Name */}
           <MiddleInput
             textLable="Your Name"
             input="Enter Your Name"
             icon="check-circle-outline"
             onChangeText={(text) => {
-              setUser(text);
+              setName(text);
             }}
           />
           {/* ------------------------------- */}
