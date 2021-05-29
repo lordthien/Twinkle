@@ -70,6 +70,11 @@ expo start
   expo install expo-linear-gradient
   ```
 
+- **Cài đặt Login with Facebook:**
+  ```
+  expo install expo-facebook
+  ```
+
 ---
 
 ---
