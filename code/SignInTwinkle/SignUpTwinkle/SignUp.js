@@ -33,35 +33,42 @@ function SignUp({ navigation }) {
   //ngocthien@gmail.com
   //123456789
   //Ngô Ngọc Thiện
-  const onSignUp = () => {
-    const data = {
-      email: email,
-      name: name,
-      password: password,
-    };
-    fetch(url, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-        console.log("--------------------------------");
-        if (response.data.ok === false) {
-          Alert.alert(
-            "Thông báo",
-            "Email của bạn đã được đăng ký. Vui lòng kiểm tra lại!"
-          );
-        } else {
-          navigation.navigate("Login");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const onSignUp = async () => {
+    try {
+      const data = {
+        email: email,
+        name: name,
+        password: password,
+      };
+      // let res = await fetch(url, {
+      //   method: 'POST',
+      //   headers: {
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(data)
+      // })
+      axios.post(url, data)
+        .then((response) => {
+          console.log(response)
+          console.log(JSON.stringify(response.data));
+          console.log("--------------------------------");
+          if (response.data.ok === false) {
+            Alert.alert(
+              "Thông báo",
+              "Email của bạn đã được đăng ký. Vui lòng kiểm tra lại!"
+            );
+          } else {
+            navigation.navigate("Login");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      console.log(res)
+    } catch (error) {
+      console.log(error.response)
+    }
   };
 
   return (
