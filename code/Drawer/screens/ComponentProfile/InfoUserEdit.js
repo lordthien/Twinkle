@@ -4,25 +4,25 @@ import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 
-export default function InfoUser() {
+export default function InfoUser({name, email, phone}) {
   return (
     <View style={styles.textContainer}>
       <View style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Name</Text>
-        <Text style={styles.textName}>David Copperfill</Text>
+        <Text style={styles.textName}>{name}</Text>
       </View>
       <View style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Email</Text>
-        <Text style={styles.textName}>ngongocthien@dtu.edu.vn</Text>
+        <Text style={styles.textName}>{email}</Text>
       </View>
       <View style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Phone Number</Text>
-        <Text style={styles.textName}>0705112199</Text>
+        <Text style={styles.textName}>{phone}</Text>
       </View>
-      <TouchableOpacity style={styles.boxContainer}>
+      {/* <TouchableOpacity style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Password</Text>
         <Text style={styles.textName}>*********</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <View style={styles.saveContainer}>
         <TouchableOpacity style={styles.saveButton}>
           <Text style={styles.textSave}>Save</Text>

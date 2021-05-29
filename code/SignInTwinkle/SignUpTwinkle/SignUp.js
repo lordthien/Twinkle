@@ -40,17 +40,8 @@ function SignUp({ navigation }) {
         name: name,
         password: password,
       };
-      // let res = await fetch(url, {
-      //   method: 'POST',
-      //   headers: {
-      //     Accept: 'application/json',
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(data)
-      // })
       axios.post(url, data)
         .then((response) => {
-          console.log(response)
           console.log(JSON.stringify(response.data));
           console.log("--------------------------------");
           if (response.data.ok === false) {

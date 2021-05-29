@@ -3,11 +3,12 @@ import { Text, StyleSheet, View, FlatList, Image } from "react-native";
 
 import dataGalerry from "./Data/dataGalerry";
 
-function Gallery({}) {
+function Gallery({photos}) {
   renderItem = ({ item, index }) => {
+    console.log("http://149.28.137.174:5000/"+item.url)
     return (
       <View style={styles.container}>
-        <Image source={item.imageUrl} style={styles.imageContainer} />
+        <Image source={{uri:`http://149.28.137.174:5000${item.url}`}} style={styles.imageContainer} />
       </View>
     );
   };
@@ -17,7 +18,7 @@ function Gallery({}) {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={dataGalerry}
+        data={photos}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
           return "gallery-" + item.id;

@@ -1,16 +1,19 @@
 import * as React from "react";
 import { Feather as Icon } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import * as Facebook from "expo-facebook";
 
 import Settings from "./screens/Settings";
 import Profile from "./screens/Profile";
 import Home01 from "../Home/Home/Home01";
+import Navigate from "../Navigate";
 import Login from "../SignInTwinkle/SignIn/Login";
 import BottomTab_Home01 from "../TabNavigators/BottomTab_Home01";
+import { Button } from "react-native";
 
 const Drawer = createDrawerNavigator();
 
-const CustomDrawerNavigator = () => {
+const CustomDrawerNavigator = ({ navigation }) => {
   return (
     <Drawer.Navigator
       drawerPosition="left"
@@ -51,9 +54,10 @@ const CustomDrawerNavigator = () => {
           ),
         }}
       />
+
       <Drawer.Screen
         name="Login"
-        component={Login}
+        component={Navigate}
         options={{
           title: "Sign out",
           drawerIcon: ({ color, size }) => (

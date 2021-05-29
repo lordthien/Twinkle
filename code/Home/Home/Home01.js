@@ -1,15 +1,12 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  SafeAreaView,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, View, SafeAreaView, ScrollView } from "react-native";
 
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
+
+import * as SecureStore from "expo-secure-store";
 
 import TextHeader from "../Home/Component/TextHeader";
 import Header from "../Home/Component/Header";
@@ -63,11 +60,7 @@ function Home01({ navigation }) {
         <TextHeader text="Best Salon" textViewAll="View All" />
       </View>
       <View style={styles.squareContainer}>
-        <BestSalon
-          onPress={() => {
-            navigation.navigate("HomeBarber");
-          }}
-        />
+        <BestSalon navigation={navigation} />
       </View>
     </SafeAreaView>
   );

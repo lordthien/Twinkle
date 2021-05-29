@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   SafeAreaView,
   Text,
@@ -9,7 +9,8 @@ import {
 } from "react-native";
 import { Ionicons as Icon } from "@expo/vector-icons";
 import axios from "axios";
-import * as Facebook from 'expo-facebook'
+import * as Facebook from "expo-facebook";
+import * as SecureStore from 'expo-secure-store';
 
 import Logo from "../Component/Logo";
 import Header from "../Component/Header";
@@ -19,68 +20,79 @@ import GilroyText from "../Component/GilroyText";
 import Button from "../Component/Button";
 
 function validateEmail(email) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
-
-async function logInFacebook() {
-  try {
-    await Facebook.initializeAsync({
-      appId: '537314884344603',
-    });
-    const {
-      type,
-      token,
-      expirationDate,
-      permissions,
-      declinedPermissions,
-    } = await Facebook.logInWithReadPermissionsAsync({
-      permissions: ['public_profile'],
-    });
-    if (type === 'success') {
-      // Get the user's name using Facebook's Graph API
-      const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
-      Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
-    } else {
-      // type === 'cancel'
-    }
-  } catch (error) {
-    console.log(error)
-    alert(`Facebook Login Error: ${error.message}`);
-  }
-}
-
 const url = "http://149.28.137.174:5000/app/login";
 
 function Login({ navigation }) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  //ngothanhtung.it@outlook.com
-  //ngocthien@gmail.com
-  const onSignIn = () => {
+
+  async function logInFacebook() {
+    try {
+      await Facebook.initializeAsync({
+        appId: "537314884344603",
+      });
+      const { type, token, expirationDate, permissions, declinedPermissions } =
+        await Facebook.logInWithReadPermissionsAsync({
+          permissions: ["public_profile", "email"],
+        });
+      if (type === "success") {
+        // Get the user's name using Facebook's Graph API
+        const response = await fetch(
+          `https://graph.facebook.com/me?access_token=${token}`
+        ).then((res) => res.json());
+        console.log(response);
+        Alert.alert("Logged in!", `Hi ${(await response.json()).name}!`);
+      } else {
+        // type === 'cancel'
+      }
+    } catch (error) {
+      if (error.message == "Already read") {
+        navigation.navigate("Home01");
+      }
+    }
+  }
+
+  const onSignIn = async () => {
     const data = {
       email: email,
       password: password,
     };
-    console.log(data, url)
-    axios
+    //dovanminhan@gmail.com
+    let response = await axios
       .post(url, data)
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-        console.log("--------------------------------");
-        if (response.data.ok === false) {
-          Alert.alert(
-            "Thông báo",
-            "Email của bạn chưa đăng ký. Vui lòng kiểm tra lại!"
-          );
-        } else {
-          navigation.navigate("Home01");
-        }
-      })
+      .then((response) => response.data)
       .catch((error) => {
         console.log(error);
       });
+    console.log(response);
+    if (response.status !== "Success") {
+      Alert.alert("Thông báo", response.error);
+    } else {
+      await SecureStore.setItemAsync("token", response.token);
+      await SecureStore.setItemAsync("customer", 
+      JSON.stringify({
+        avatar: response.customer.avatar,
+        name: response.customer.name, 
+        email: response.customer.email,
+        phoneNumber: response.customer.phoneNumber
+      }));
+      navigation.navigate("Home01");
+    }
   };
+
+  // useEffect( () => {
+  //   const SignOut = async () => {
+  //     console.log("Sign Out");
+  //     await SecureStore.deleteItemAsync("token");
+  //     await SecureStore.deleteItemAsync("customer");
+  //   };
+  //   SignOut()
+  // }, []);
+
 
   return (
     <SafeAreaView style={styles.container}>

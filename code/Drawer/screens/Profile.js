@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -10,12 +10,24 @@ import {
   Image,
 } from "react-native";
 
+import * as SecureStore from 'expo-secure-store';
 import { AntDesign } from "@expo/vector-icons";
 import ImageUser from "./ComponentProfile/ImageUser";
 import InfoUser from "./ComponentProfile/InfoUser";
 import InfoUserEdit from "./ComponentProfile/InfoUserEdit";
 
+const url = "http://149.28.137.174:5000/app/me";
+
 function Profile({ navigation }) {
+  const [data, setData] = useState({name: "", email: "", phoneNumber: "", avatar: ""});
+  useEffect(() => {
+    async function getInformation() {
+      let data = JSON.parse(await SecureStore.getItemAsync("customer"));
+      setData(data)
+    }
+    getInformation()
+    return;
+  }, []);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.headerContainer}>
@@ -31,15 +43,15 @@ function Profile({ navigation }) {
         </TouchableOpacity>
         <Text style={{ marginLeft: 12, fontSize: 16 }}>Profile</Text>
         <TouchableOpacity style={styles.editContainer}>
-          <Text style={{ fontSize: 16, color: "#FF6C44"}}>Edit</Text>
+          <Text style={{ fontSize: 16, color: "#FF6C44" }}>Edit</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.imageContainer}>
-        <ImageUser />
+        <ImageUser avatar={data.avatar}/>
       </View>
       <View style={styles.infoContainer}>
         {/* <InfoUser /> */}
-        <InfoUserEdit />
+        <InfoUserEdit name={data.name} email={data.email} phone={data.phoneNumber}/>
       </View>
 
       {/* <Button

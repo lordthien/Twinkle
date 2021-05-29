@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   Text,
   StyleSheet,
@@ -22,8 +22,26 @@ import Block from "../Home/Component/Block";
 import TextHeader from "../Home/Component/TextHeader";
 import Gallery from "./ComponentBarber/Gallery";
 import BookNow from "./ComponentBarber/BookNow";
+import axios from "axios";
 
-function HomeBarber({ navigation }) {
+function HomeBarber({ route, navigation }) {
+  const [store, setStore] = useState({});
+  const [selectedItem, setSelectedItem] = useState(0);
+  const url = `http://149.28.137.174:5000/app/storeById?id=${route.params.id}`;
+  useEffect(() => {
+    console.log(route.params.id)
+    let getData = async () => {
+      let result = await axios.get(url)
+      .then((res) => res.data)
+      .catch((err) => {
+        throw err;
+      });
+      setStore(result.store);
+      console.log(store)
+    };
+    getData();
+    return;
+  }, []);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -47,18 +65,18 @@ function HomeBarber({ navigation }) {
               source={require("../../../assets/images/barber1.jpeg")}
             />
             <View style={styles.nameBarberContainer}>
-              <Name textName="Barber Shop Star" />
+              <Name textName={store.name} />
             </View>
           </View>
           {/* -------------------------------------------------------------- */}
           <View style={styles.mapContainer}>
             <Feather name="map-pin" size={24} color="#bdc3c7" />
-            <Text style={styles.text}>102 Nguyen Van Linh</Text>
+            <Text style={styles.text}>{store.address}</Text>
           </View>
           {/* -------------------------------------------------------------- */}
           <View style={styles.timeContainer}>
             <Ionicons name="time-outline" size={24} color="#bdc3c7" />
-            <Text style={styles.text}>10.00 AM - 22.00 PM</Text>
+            <Text style={styles.text}>{store.openTime}</Text>
           </View>
           {/* -------------------------------------------------------------- */}
           <View style={styles.headerText}>
@@ -99,7 +117,7 @@ function HomeBarber({ navigation }) {
           </View>
           {/* -------------------------------------------------------------- */}
           <View style={styles.squareContainer}>
-            <Gallery />
+            <Gallery photos={store.photos} />
           </View>
         </ScrollView>
       </View>
