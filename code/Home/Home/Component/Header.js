@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -7,11 +7,10 @@ import {
   TextInput,
 } from "react-native";
 
-
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 import { Ionicons } from "@expo/vector-icons";
 
-function Header({ onPress }) {
+function Header({ onPress, navigation }) {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -38,7 +37,16 @@ function Header({ onPress }) {
           />
         </TouchableOpacity>
         <View style={styles.find}>
-          
+          <TouchableOpacity style={styles.iconInputContainer}>
+            <Ionicons
+              name="search-outline"
+              size={24}
+              color="black"
+              onPress={() => {
+                navigation.navigate("TopSalonScreen");
+              }}
+            />
+          </TouchableOpacity>
           <TextInput style={styles.textInputContainer} placeholder="Search" />
         </View>
       </View>
@@ -59,23 +67,30 @@ const styles = StyleSheet.create({
   findContainer: {
     flex: 1,
     flexDirection: "row",
-    // justifyContent: "space-between",
     alignItems: "center",
   },
   find: {
+    flexDirection: "row",
     height: 40,
     width: 290,
     borderRadius: 12,
     marginLeft: 12,
     backgroundColor: "#898B9A30",
+    alignItems: "center",
+  },
+  iconInputContainer: {
+    height: 65,
+    fontSize: 20,
+    color: "#898B9A",
+    marginLeft: 8,
     justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: "center",
   },
   textInputContainer: {
     height: 65,
     fontSize: 20,
     color: "#898B9A",
-    marginLeft: 12,
+    marginLeft: 8,
     marginRight: 12,
   },
 });

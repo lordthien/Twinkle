@@ -22,6 +22,7 @@ function Home01({ navigation }) {
           onPress={() => {
             navigation.openDrawer();
           }}
+          navigation={navigation} 
         />
       </View>
       <View style={styles.adsContainer}>

@@ -11,6 +11,7 @@ import ResetPasswordComplete from "../SignInTwinkle/PasswordRecovery/ResetPasswo
 import HomeBarber from "../Home/Barber/HomeBarber";
 import Book from "../Home/Book/Book";
 import InfoBook from "../Home/InfoBook/InfoBook";
+import TopSalonScreen from "../TabNavigators/screensHome01/TopSalonScreen";
 
 import CustomDrawerNavigator from "../Drawer/CustomDrawerNavigator";
 import MaterialTopTab_Book from "../TabNavigators/MaterialTopTab_Book";
@@ -51,6 +52,13 @@ export default function Navigate() {
       <Stack.Screen
         name="Book"
         component={Book}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="TopSalonScreen"
+        component={TopSalonScreen}
         options={{
           headerShown: false,
         }}
