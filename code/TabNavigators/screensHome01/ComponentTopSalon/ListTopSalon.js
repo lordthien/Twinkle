@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, FlatList, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-import dataBestSalon from "../../../Home/Home/Component/Data/dataBestSalon";
+import * as SecureStore from "expo-secure-store";
+import axios from "axios";
 
 import { AntDesign } from "@expo/vector-icons";
 
-function BestSalon({ onPress }) {
-  const [selectedItem, setSelectedItem] = React.useState(0);
+function BestSalon({ onPress, query, navigation }) {
+  // const [selectedItem, setSelectedItem] = React.useState(0);
+  let url = `http://149.28.137.174:5000/app/search?q=${String(
+    query
+  ).toLowerCase()}`;
+  const [data, setData] = useState({ stores: [] });
+  const [selectedItem, setSelectedItem] = useState(0);
+  useEffect(() => {
+    let getData = async () => {
+      let result = await axios
+        .get(url)
+        .then((res) => res.data)
+        .catch((err) => {
+          throw err;
+        });
+      result.stores = result.stores.map((e) => {
+        return {
+          id: e._id,
+          name: e.name,
+          avatar: e.avatar,
+          address: e.address,
+          star: e.averagePoint,
+        };
+      });
+      setData(result);
+    };
+    getData();
+    return;
+  }, [url]);
 
   const renderItem = ({ item, index }) => {
     return (
@@ -18,11 +46,14 @@ function BestSalon({ onPress }) {
             : styles.buttonSalon
         }
         onPress={() => {
-          onPress(onPress);
           setSelectedItem(index);
+          navigation.navigate("HomeBarber", { id: item.id });
         }}
       >
-        <Image source={item.imageUrl} style={styles.imageSalon} />
+        <Image
+          source={{ uri: `http://149.28.137.174:5000/${item.avatar}` }}
+          style={styles.imageSalon}
+        />
         <View style={styles.textContainer}>
           <Text
             style={
@@ -69,7 +100,7 @@ function BestSalon({ onPress }) {
     <View style={styles.container}>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={dataBestSalon}
+        data={data.stores}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
           return "bestsalon-" + item.id;

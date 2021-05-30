@@ -15,12 +15,15 @@ function Header({ onPress, navigation }) {
     name: "",
     email: "",
     phoneNumber: "",
-    avatar: "",
+    avatar: "public/app/avatar.png",
   });
   useEffect(() => {
     async function getInformation() {
-      let data = JSON.parse(await SecureStore.getItemAsync("customer"));
-      setData(data);
+      try {
+        let data = JSON.parse(await SecureStore.getItemAsync("customer"));
+        if(data) setData(data);
+      } catch (error) {
+      }
     }
     getInformation();
     return;
@@ -36,7 +39,7 @@ function Header({ onPress, navigation }) {
             }}
           />
         </TouchableOpacity>
-        <View style={styles.find}>
+        {/* <View style={styles.find}>
           <TouchableOpacity style={styles.iconInputContainer}>
             <Ionicons
               name="search-outline"
@@ -48,6 +51,12 @@ function Header({ onPress, navigation }) {
             />
           </TouchableOpacity>
           <TextInput style={styles.textInputContainer} placeholder="Search" />
+        </View> */}
+        <View style={styles.imageContainer}>
+          <Image
+            style={styles.logoContainer}
+            source={require("../../../../assets/Twinkle_text.png")}
+          />
         </View>
       </View>
     </View>
@@ -69,29 +78,38 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  find: {
-    flexDirection: "row",
-    height: 40,
-    width: 290,
-    borderRadius: 12,
-    marginLeft: 12,
-    backgroundColor: "#898B9A30",
+  imageContainer: {
+    flex: 1,
     alignItems: "center",
+    marginRight: 42,
   },
-  iconInputContainer: {
-    height: 65,
-    fontSize: 20,
-    color: "#898B9A",
-    marginLeft: 8,
-    justifyContent: "center",
-    alignItems: "center",
+  logoContainer: {
+    width: 120,
+    height: 30,
   },
-  textInputContainer: {
-    height: 65,
-    fontSize: 20,
-    color: "#898B9A",
-    marginLeft: 8,
-    marginRight: 12,
-  },
+  // find: {
+  //   flexDirection: "row",
+  //   height: 40,
+  //   width: 290,
+  //   borderRadius: 12,
+  //   marginLeft: 12,
+  //   backgroundColor: "#898B9A30",
+  //   alignItems: "center",
+  // },
+  // iconInputContainer: {
+  //   height: 65,
+  //   fontSize: 20,
+  //   color: "#898B9A",
+  //   marginLeft: 8,
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
+  // textInputContainer: {
+  //   height: 65,
+  //   fontSize: 20,
+  //   color: "#898B9A",
+  //   marginLeft: 8,
+  //   marginRight: 12,
+  // },
 });
 export default Header;

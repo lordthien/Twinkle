@@ -12,6 +12,8 @@ import HomeBarber from "../Home/Barber/HomeBarber";
 import Book from "../Home/Book/Book";
 import InfoBook from "../Home/InfoBook/InfoBook";
 import TopSalonScreen from "../TabNavigators/screensHome01/TopSalonScreen";
+import Profile from "../Drawer/screens/Profile";
+import ProfileEdit from "../Drawer/screens/ProfileEdit";
 
 import CustomDrawerNavigator from "../Drawer/CustomDrawerNavigator";
 import MaterialTopTab_Book from "../TabNavigators/MaterialTopTab_Book";
@@ -22,10 +24,17 @@ export default function Navigate() {
   return (
     <Stack.Navigator /*headerMode="screen"*/>
       <Stack.Screen
+        name="Home01"
+        component={CustomDrawerNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Stack.Screen
         name="SignUp"
         component={SignUp}
@@ -34,13 +43,13 @@ export default function Navigate() {
         }}
       />
       {/* ---------------------------- */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Home01"
         component={CustomDrawerNavigator}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
       {/* -------------------------- */}
       <Stack.Screen
         name="HomeBarber"
@@ -59,6 +68,20 @@ export default function Navigate() {
       <Stack.Screen
         name="TopSalonScreen"
         component={TopSalonScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="ProfileEdit"
+        component={ProfileEdit}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
         options={{
           headerShown: false,
         }}

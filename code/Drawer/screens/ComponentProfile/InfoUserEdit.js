@@ -1,32 +1,26 @@
-import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TextInput } from "react-native";
 
-import { AntDesign } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
-
-export default function InfoUser({name, email, phone}) {
+export default function InfoUser({ name, email, phone }) {
+  const [newName, setNewName] = useState(name);
+  const [newEmail, setNewEmail] = useState(email);
+  const [newPhone, setNewPhone] = useState(phone);
+  let onSavePress = async () => {};
   return (
     <View style={styles.textContainer}>
       <View style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Name</Text>
-        <Text style={styles.textName}>{name}</Text>
+        {/* <Text style={styles.textName}>{name}</Text> */}
+        <TextInput style={styles.textName} placeholder={"Name"}>{name}</TextInput>
       </View>
       <View style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Email</Text>
-        <Text style={styles.textName}>{email}</Text>
+        {/* <Text style={styles.textName}>{email}</Text> */}
+        <TextInput style={styles.textName} placeholder={"Email"}>{email}</TextInput>
       </View>
       <View style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Phone Number</Text>
-        <Text style={styles.textName}>{phone}</Text>
-      </View>
-      {/* <TouchableOpacity style={styles.boxContainer}>
-        <Text style={styles.nameContainer}>Password</Text>
-        <Text style={styles.textName}>*********</Text>
-      </TouchableOpacity> */}
-      <View style={styles.saveContainer}>
-        <TouchableOpacity style={styles.saveButton}>
-          <Text style={styles.textSave}>Save</Text>
-        </TouchableOpacity>
+        <TextInput style={styles.textName} placeholder={"0123456789"}>{phone}</TextInput>
       </View>
     </View>
   );
@@ -55,29 +49,5 @@ const styles = StyleSheet.create({
   textName: {
     fontSize: 14,
     fontWeight: "500",
-  },
-  textSave: {
-    fontSize: 14,
-    fontWeight: "500",
-    color: "white",
-  },
-
-  saveContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  saveButton: {
-    height: 50,
-    width: 200,
-    borderRadius: 12,
-    backgroundColor: "#FF6C44",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-  // ---------------
-  leftContainer: {
-    marginLeft: 160,
   },
 });

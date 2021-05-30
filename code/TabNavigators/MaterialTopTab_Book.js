@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TouchableOpacity, SafeAreaView } from "react-native";
+import axios from "axios";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from '@expo/vector-icons';
+import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
@@ -13,7 +14,7 @@ import CutHair from "./screensBook/CutHair";
 import Uon from "./screensBook/Uon";
 import Nhuom from "./screensBook/Nhuom";
 import More from "./screensBook/More";
-
+import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -21,7 +22,23 @@ const ICON_SIZE = 24;
 const ACTIVE_COLOR = "#FF6C44";
 const INACTIVE_COLOR = "#898B9A";
 
-const MaterialTopTab_Book = ({ navigation }) => {
+const MaterialTopTab_Book = ({ navigation, route }) => {
+  const [types, setTypes] = useState([{services: {}}]);
+  const [selectedServices, setSelectedServices] = useState([{_id: ""}]);
+  const url = `http://149.28.137.174:5000/app/servicesByStoreId?id=${route.params.storeId}`;
+  useEffect(() => {
+    let getData = async () => {
+      let result = await axios
+        .get(url)
+        .then((res) => res.data)
+        .catch((err) => {
+          throw err;
+        });
+      setTypes(result.types);
+    };
+    getData();
+    return;
+  }, []);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.headerContainer}>
@@ -61,12 +78,19 @@ const MaterialTopTab_Book = ({ navigation }) => {
       >
         <Tab.Screen
           name="CutHair"
-          component={CutHair}
+          component={() => (
+            <CutHair
+              navigation={navigation}
+              data={types[0]}
+              selectedServices={selectedServices}
+              setSelectedServices={setSelectedServices}
+            />
+          )}
           options={{
             title: "Cut Hair",
             tabBarIcon: ({ focused, color }) => (
-              <Ionicons 
-                name={focused ? "cut" : "cut-outline"} 
+              <Ionicons
+                name={focused ? "cut" : "cut-outline"}
                 size={ICON_SIZE}
                 color={color}
               />

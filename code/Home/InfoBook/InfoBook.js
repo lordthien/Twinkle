@@ -59,7 +59,7 @@ function InfoBook({ navigation, route }) {
         </View>
 
         <View style={styles.textHeader}>
-          <TextHeaderInfo title="4. DATE" />
+          <TextHeaderInfo title="4. DATE & TIMED" />
           <View style={styles.salonSelectContainer}>
             <FontAwesome
               style={{ marginLeft: 12, marginRight: 12 }}
@@ -67,25 +67,12 @@ function InfoBook({ navigation, route }) {
               size={24}
               color="black"
             />
-            <Text style={styles.text}>4 - June - 2021</Text>
+            <Text style={styles.text}>4 - June - 2021 / 14:00</Text>
           </View>
         </View>
 
         <View style={styles.textHeader}>
-          <TextHeaderInfo title="5. TIMED" />
-          <View style={styles.salonSelectContainer}>
-            <Ionicons
-              style={{ marginLeft: 12, marginRight: 12 }}
-              name="time-outline"
-              size={24}
-              color="black"
-            />
-            <Text style={styles.text}>14:00 PM</Text>
-          </View>
-        </View>
-
-        <View style={styles.textHeader}>
-          <TextHeaderInfo title="6. NOTES" />
+          <TextHeaderInfo title="5. NOTES" />
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.inputText}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, TouchableOpacity, SafeAreaView } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -6,6 +6,8 @@ import BookNow from "../Barber/ComponentBarber/BookNow";
 import SelectDateTime from "../Book/ComponentBook/SelectDateTime";
 
 function Book({ navigation, route }) {
+  const [staff, setStaff] = useState("");
+  const [selectTime, setSelectTime] = useState();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -22,7 +24,13 @@ function Book({ navigation, route }) {
       </View>
       {/* -------------------------------------------------------------- */}
       <View style={styles.timeContainer}>
-        <SelectDateTime />
+        <SelectDateTime
+          staff={staff}
+          setStaff={setStaff}
+          selectTime={selectTime}
+          setSelectTime={setSelectTime}
+          storeId={route.params.storeId}
+        />
       </View>
       {/* -------------------------------------------------------------- */}
       <View style={styles.bottomContainer}>
@@ -30,6 +38,9 @@ function Book({ navigation, route }) {
           title="Book Now"
           onPress={() => {
             navigation.navigate("MaterialTopTabNavigator", {
+              staff: staff,
+              selectTime: selectTime,
+              storeId: route.params.storeId,
             });
           }}
         />

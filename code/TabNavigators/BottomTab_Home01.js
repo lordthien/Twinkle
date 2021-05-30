@@ -92,17 +92,17 @@ export default function BottomTab_Home01() {
                 return (
                   <View style={styles.tabButton}>
                     <Ionicons
-                      name="medal-outline"
+                      name="search-outline"
                       size={size * 0.8}
                       color="white"
                     />
-                    <Text style={styles.label}>Top</Text>
+                    <Text style={styles.label}>Search</Text>
                   </View>
                 );
               } else {
                 return (
                   <Ionicons
-                    name="medal-outline"
+                    name="search-outline"
                     size={size * 0.8}
                     color={color}
                   />

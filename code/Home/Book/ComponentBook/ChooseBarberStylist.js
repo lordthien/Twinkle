@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
   StyleSheet,
   Text,
@@ -8,13 +8,35 @@ import {
   Image,
 } from "react-native";
 
+import axios from "axios";
 import { AntDesign } from "@expo/vector-icons";
 import dataBarber from "./dataBarber/dataBarber";
 
-export default function ChooseBarber({route}) {
-  const [selectedItem, setSelectedItem] = React.useState();
-  // const [selectedItem, setSelectedItem] = React.useState(route.params.index);
-
+export default function ChooseBarber({ route, storeId, staff, setStaff }) {
+  const url = `http://149.28.137.174:5000/app/staffsByStoreId?id=${storeId}`
+  const [selectedItem, setSelectedItem] = useState();
+  const [data, setData] = useState([])
+  useEffect(() => {
+    let getData = async () => {
+      let result = await axios.get(url)
+      .then((res) => res.data)
+      .catch((err) => {
+        throw err;
+      });
+      result=result.staffs.map((e) => {
+        return {
+          _id: e._id,
+          name: e.name.slice(e.name.slice(0,e.name.lastIndexOf(" ")).lastIndexOf(" ")),
+          avatar: e.avatar,
+          services: e.services,
+          star: 4.5
+        }
+      })
+      setData(result);
+    };
+    getData();
+    return;
+  }, []);
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
@@ -25,10 +47,10 @@ export default function ChooseBarber({route}) {
         }
         onPress={() => {
           setSelectedItem(index);
-          // route.params.selectedItem(index);
+          setStaff(item._id)
         }}
       >
-        <Image source={item.imageUrl} style={styles.imageSalon} />
+        <Image source={{uri: `http://149.28.137.174:5000${item.avatar}`}} style={styles.imageSalon} />
 
         <View style={styles.textContainer}>
           <Text
@@ -42,7 +64,9 @@ export default function ChooseBarber({route}) {
           </Text>
           <Text
             style={
-              selectedItem === index ? styles.textSalonSelected : styles.textSalon
+              selectedItem === index
+                ? styles.textSalonSelected
+                : styles.textSalon
             }
           >
             {item.star}{" "}
@@ -63,7 +87,7 @@ export default function ChooseBarber({route}) {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={dataBarber}
+        data={data}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
           return "barber-" + item.id;
@@ -83,7 +107,7 @@ const styles = StyleSheet.create({
     height: 200,
     width: 150,
     borderRadius: 12,
-    backgroundColor: "#bdc3c7",
+    backgroundColor: "#FF6C44",
     marginRight: 16,
     justifyContent: "flex-start",
     alignItems: "center",

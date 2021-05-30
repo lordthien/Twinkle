@@ -24,7 +24,7 @@ import Gallery from "./ComponentBarber/Gallery";
 import BookNow from "./ComponentBarber/BookNow";
 import axios from "axios";
 
-function HomeBarber({ route, navigation }) {
+function HomeBarber({ route, navigation, }) {
   const [store, setStore] = useState({});
   const [selectedItem, setSelectedItem] = useState(0);
   const url = `http://149.28.137.174:5000/app/storeById?id=${route.params.id}`;
@@ -37,7 +37,6 @@ function HomeBarber({ route, navigation }) {
         throw err;
       });
       setStore(result.store);
-      console.log(store)
     };
     getData();
     return;
@@ -127,7 +126,7 @@ function HomeBarber({ route, navigation }) {
         <BookNow
           title="Book Now"
           onPress={() => {
-            navigation.navigate("Book");
+            navigation.navigate("Book", {storeId: store._id});
           }}
         />
       </View>

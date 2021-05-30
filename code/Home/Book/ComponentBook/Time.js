@@ -7,9 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import dataTime from "./dataTimeAndDateTime/dataTime";
-
-export default function Time({ route }) {
+export default function Time({ times, selectDate, selectTime, setSelectTime }) {
   const [selectedItem, setSelectedItem] = React.useState();
 
   const renderItem = ({ item, index }) => {
@@ -23,6 +21,8 @@ export default function Time({ route }) {
           }
           onPress={() => {
             setSelectedItem(index);
+            setSelectTime(selectDate.getTime()+item*3600000)
+            // console.log(selectTime)
           }}
         >
           <Text
@@ -32,7 +32,7 @@ export default function Time({ route }) {
                 : styles.textSalon
             }
           >
-            {item.name}
+            {item<10?`0${item}:00`:`${item}:00`}
           </Text>
         </TouchableOpacity>
       </View>
@@ -43,7 +43,7 @@ export default function Time({ route }) {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={dataTime}
+        data={times}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
           return "time-" + item.id;

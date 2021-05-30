@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,10 +7,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import dataDateTime from "./dataTimeAndDateTime/dataDateTime";
-
-export default function Time({}) {
-  const [selectedItem, setSelectedItem] = React.useState();
+export default function DateTime({ dates, selectDate, setSelectDate }) {
+  const [selectedItem, setSelectedItem] = useState();
 
   const renderItem = ({ item, index }) => {
     return (
@@ -23,6 +21,8 @@ export default function Time({}) {
           }
           onPress={() => {
             setSelectedItem(index);
+            setSelectDate(item)
+            // console.log(item)
           }}
         >
           <Text
@@ -32,7 +32,7 @@ export default function Time({}) {
                 : styles.textSalon
             }
           >
-            {item.name1}
+            {typeof item=== typeof (new Date())?item.toDateString().slice(0, 3):""}
           </Text>
           <Text
             style={
@@ -41,7 +41,7 @@ export default function Time({}) {
                 : styles.textSalon
             }
           >
-            {item.name2}
+            {typeof item=== typeof (new Date())?item.getDate():""}
           </Text>
         </TouchableOpacity>
       </View>
@@ -52,7 +52,7 @@ export default function Time({}) {
       <FlatList
         horizontal
         showsHorizontalScrollIndicator={false}
-        data={dataDateTime}
+        data={dates}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
           return "time-" + item.id;

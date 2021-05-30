@@ -15,7 +15,7 @@ import InfoUserEdit from "./ComponentProfile/InfoUserEdit";
 
 const url = "http://149.28.137.174:5000/app/me";
 
-function Profile({ navigation }) {
+function ProfileEdit({ navigation }) {
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -39,32 +39,32 @@ function Profile({ navigation }) {
             size={24}
             color="black"
             onPress={() => {
-              navigation.openDrawer();
+              navigation.navigate("Profile");
+              // navigation.openDrawer();
             }}
           />
         </TouchableOpacity>
         <Text style={{ marginLeft: 12, fontSize: 16 }}>Profile</Text>
-        <TouchableOpacity style={styles.editContainer}>
-          <Text
-            style={{ fontSize: 16, color: "#FF6C44" }}
-            onPress={() => {
-              navigation.navigate("ProfileEdit");
-            }}
-          >
-            Edit
-          </Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.imageContainer}>
         <ImageUser avatar={data.avatar} />
       </View>
       <View style={styles.infoContainer}>
-        {/* <InfoUser /> */}
         <InfoUserEdit
           name={data.name}
           email={data.email}
           phone={data.phoneNumber}
         />
+      </View>
+      <View style={styles.saveContainer}>
+        <TouchableOpacity
+          style={styles.saveButton}
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        >
+          <Text style={styles.textSave}>Save</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -86,17 +86,32 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginLeft: 12,
   },
-  editContainer: {
-    flex: 1,
-    alignItems: "flex-end",
-    marginRight: 24,
-  },
   imageContainer: {
     flex: 0.4,
   },
   infoContainer: {
-    flex: 1,
+    flex: 0.5,
+  },
+
+  textSave: {
+    fontSize: 14,
+    fontWeight: "500",
+    color: "white",
+  },
+
+  saveContainer: {
+    flex: 0.5,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  saveButton: {
+    height: 50,
+    width: 200,
+    borderRadius: 12,
+    backgroundColor: "#FF6C44",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
-export default Profile;
+export default ProfileEdit;

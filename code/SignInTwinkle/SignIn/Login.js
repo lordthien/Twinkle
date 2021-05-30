@@ -68,7 +68,6 @@ function Login({ navigation }) {
       .catch((error) => {
         console.log(error);
       });
-    console.log(response);
     if (response.status !== "Success") {
       Alert.alert("Thông báo", response.error);
     } else {
