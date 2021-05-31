@@ -120,7 +120,6 @@ function HomeBarber({ route, navigation, }) {
           </View>
         </ScrollView>
       </View>
-
       {/* -------------------------------------------------------------- */}
       <View style={styles.bottomContainer}>
         <BookNow

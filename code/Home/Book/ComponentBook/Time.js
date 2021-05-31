@@ -21,7 +21,7 @@ export default function Time({ times, selectDate, selectTime, setSelectTime }) {
           }
           onPress={() => {
             setSelectedItem(index);
-            setSelectTime(selectDate.getTime()+item*3600000)
+            setSelectTime(selectDate.getTime() + item * 3600000);
             // console.log(selectTime)
           }}
         >
@@ -32,7 +32,7 @@ export default function Time({ times, selectDate, selectTime, setSelectTime }) {
                 : styles.textSalon
             }
           >
-            {item<10?`0${item}:00`:`${item}:00`}
+            {item < 10 ? `0${item}:00` : `${item}:00`}
           </Text>
         </TouchableOpacity>
       </View>

@@ -13,9 +13,15 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import BookNow from "../../Home/Barber/ComponentBarber/BookNow";
 import dataMore from "../dataServices/dataMore";
 
-export default function FavouriteScreen({ navigation }) {
+export default function FavouriteScreen({
+  navigation,
+  data,
+  selectedServices,
+  setSelectedServices,
+}) {
   const [selectedItem, setSelectedItem] = React.useState(false);
-
+  console.log(selectedServices);
+  let dataMore = data.services;
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
@@ -24,6 +30,12 @@ export default function FavouriteScreen({ navigation }) {
         }
         onPress={() => {
           setSelectedItem(index);
+          let list = selectedServices;
+          if (list.filter((e) => e._id == item._id).length < 1) {
+            list.push(item);
+            setSelectedServices(list);
+            console.log(list);
+          }
         }}
       >
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -40,6 +52,11 @@ export default function FavouriteScreen({ navigation }) {
                 onPress={() => {
                   let x = !selectedItem;
                   setSelectedItem({ selectedItem: x });
+                  if (typeof selectedServices === typeof [])
+                    setSelectedServices(
+                      selectedServices.filter((e) => e._id !== item._id)
+                    );
+                  console.log(selectedServices);
                 }}
               />
             </TouchableOpacity>
@@ -51,12 +68,12 @@ export default function FavouriteScreen({ navigation }) {
               }}
             >
               <View style={styles.titleContainer}>
-                <Text style={styles.textTitle}>{item.title}</Text>
-                <Text>{item.des}</Text>
+                <Text style={styles.textTitle}>{item.name}</Text>
+                <Text style={{ maxWidth: 235 }}>{item.description}</Text>
               </View>
               <View style={styles.textPrice}>
-                <Text style={styles.textTitle}>{item.price}</Text>
-                <Text>{item.time}</Text>
+                <Text style={styles.textTitle}>{item.price / 1000}K</Text>
+                <Text>{item.duration} phút</Text>
               </View>
             </View>
           </View>

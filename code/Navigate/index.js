@@ -1,7 +1,5 @@
 import React from "react";
 
-import { createStackNavigator } from "@react-navigation/stack";
-
 import Login from "../SignInTwinkle/SignIn/Login";
 import SignUp from "../SignInTwinkle/SignUpTwinkle/SignUp";
 import PasswordRecovery from "../SignInTwinkle/PasswordRecovery/PasswordRecovery";
@@ -18,7 +16,11 @@ import ProfileEdit from "../Drawer/screens/ProfileEdit";
 import CustomDrawerNavigator from "../Drawer/CustomDrawerNavigator";
 import MaterialTopTab_Book from "../TabNavigators/MaterialTopTab_Book";
 
+import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
+
+import { createDrawerNavigator } from "@react-navigation/drawer";
+const Drawer = createDrawerNavigator();
 
 export default function Navigate() {
   return (

@@ -21,7 +21,7 @@ export default function DateTime({ dates, selectDate, setSelectDate }) {
           }
           onPress={() => {
             setSelectedItem(index);
-            setSelectDate(item)
+            setSelectDate(item);
             // console.log(item)
           }}
         >
@@ -32,7 +32,9 @@ export default function DateTime({ dates, selectDate, setSelectDate }) {
                 : styles.textSalon
             }
           >
-            {typeof item=== typeof (new Date())?item.toDateString().slice(0, 3):""}
+            {typeof item === typeof new Date()
+              ? item.toDateString().slice(0, 3)
+              : ""}
           </Text>
           <Text
             style={
@@ -41,7 +43,7 @@ export default function DateTime({ dates, selectDate, setSelectDate }) {
                 : styles.textSalon
             }
           >
-            {typeof item=== typeof (new Date())?item.getDate():""}
+            {typeof item === typeof new Date() ? item.getDate() : ""}
           </Text>
         </TouchableOpacity>
       </View>
@@ -55,7 +57,7 @@ export default function DateTime({ dates, selectDate, setSelectDate }) {
         data={dates}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "time-" + item.id;
+          return "datetime-" + item.id;
         }}
       />
     </View>

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, TouchableOpacity, SafeAreaView } from "react-native";
 import axios from "axios";
 
-import { NavigationContainer } from "@react-navigation/native";
-import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -14,7 +12,6 @@ import CutHair from "./screensBook/CutHair";
 import Uon from "./screensBook/Uon";
 import Nhuom from "./screensBook/Nhuom";
 import More from "./screensBook/More";
-import { roundToNearestPixel } from "react-native/Libraries/Utilities/PixelRatio";
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -23,8 +20,8 @@ const ACTIVE_COLOR = "#FF6C44";
 const INACTIVE_COLOR = "#898B9A";
 
 const MaterialTopTab_Book = ({ navigation, route }) => {
-  const [types, setTypes] = useState([{services: {}}]);
-  const [selectedServices, setSelectedServices] = useState([{_id: ""}]);
+  const [types, setTypes] = useState([{ services: {} }]);
+  const [selectedServices, setSelectedServices] = useState([{ _id: "" }]);
   const url = `http://149.28.137.174:5000/app/servicesByStoreId?id=${route.params.storeId}`;
   useEffect(() => {
     let getData = async () => {
@@ -99,7 +96,15 @@ const MaterialTopTab_Book = ({ navigation, route }) => {
         />
         <Tab.Screen
           name="Uon"
-          component={Uon}
+          // component={Uon}
+          component={() => (
+            <Uon
+              navigation={navigation}
+              data={types[0]}
+              selectedServices={selectedServices}
+              setSelectedServices={setSelectedServices}
+            />
+          )}
           options={{
             title: "Uốn",
             tabBarIcon: ({ focused, color }) => (
@@ -113,7 +118,15 @@ const MaterialTopTab_Book = ({ navigation, route }) => {
         />
         <Tab.Screen
           name="Nhuộm"
-          component={Nhuom}
+          // component={Nhuom}
+          component={() => (
+            <Nhuom
+              navigation={navigation}
+              data={types[0]}
+              selectedServices={selectedServices}
+              setSelectedServices={setSelectedServices}
+            />
+          )}
           options={{
             title: "Nhuộm",
             tabBarIcon: ({ focused, color }) => (
@@ -127,7 +140,15 @@ const MaterialTopTab_Book = ({ navigation, route }) => {
         />
         <Tab.Screen
           name="More"
-          component={More}
+          // component={More}
+          component={() => (
+            <More
+              navigation={navigation}
+              data={types[0]}
+              selectedServices={selectedServices}
+              setSelectedServices={setSelectedServices}
+            />
+          )}
           options={{
             title: "More",
             tabBarIcon: ({ focused, color }) => (

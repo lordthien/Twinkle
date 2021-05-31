@@ -4,10 +4,10 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Settings from "./screens/Settings";
 import NavigateProfile from "./screens/NavigateProfile";
-import Profile from "./screens/Profile";
 import Navigate from "../Navigate";
-import Login from "../SignInTwinkle/SignIn/Login";
+// import Login from "../SignInTwinkle/SignIn/Login";
 import BottomTab_Home01 from "../TabNavigators/BottomTab_Home01";
+import { Button, View } from "react-native";
 
 const Drawer = createDrawerNavigator();
 
@@ -52,9 +52,8 @@ const CustomDrawerNavigator = ({ navigation }) => {
           ),
         }}
       />
-
       <Drawer.Screen
-        name="Login"
+        name="Navigate"
         component={Navigate}
         options={{
           title: "Sign out",
@@ -63,6 +62,9 @@ const CustomDrawerNavigator = ({ navigation }) => {
           ),
         }}
       />
+      {/* <View>
+        <Button title="Sign out" onPress={navigation.navigate("Navigate")} />
+      </View> */}
     </Drawer.Navigator>
   );
 };

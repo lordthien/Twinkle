@@ -10,7 +10,7 @@ import {
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import BookNow from "../../Home/Barber/ComponentBarber/BookNow";
-import dataCutHair from "../dataServices/dataCutHair";
+// import dataCutHair from "../dataServices/dataCutHair";
 import axios from "axios";
 
 export default function CutHair({
@@ -34,7 +34,7 @@ export default function CutHair({
           if (list.filter((e) => e._id == item._id).length < 1) {
             list.push(item);
             setSelectedServices(list);
-            // console.log(list);
+            console.log(list);
           }
         }}
       >
