@@ -25,13 +25,6 @@ const Drawer = createDrawerNavigator();
 export default function Navigate() {
   return (
     <Stack.Navigator /*headerMode="screen"*/>
-      {/* <Stack.Screen
-        name="Home01"
-        component={CustomDrawerNavigator}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
       <Stack.Screen
         name="Login"
         component={Login}

@@ -71,26 +71,32 @@ function Login({ navigation }) {
     if (response.status !== "Success") {
       Alert.alert("Thông báo", response.error);
     } else {
-      await SecureStore.setItemAsync("token", response.token);
-      await SecureStore.setItemAsync("customer", 
-      JSON.stringify({
-        avatar: response.customer.avatar,
-        name: response.customer.name, 
-        email: response.customer.email,
-        phoneNumber: response.customer.phoneNumber
-      }));
-      navigation.navigate("Home01");
+      try {
+        await SecureStore.setItemAsync("token", response.token);
+        await SecureStore.setItemAsync("customer", 
+        JSON.stringify({
+          id: response.customer._id,
+          avatar: response.customer.avatar,
+          name: response.customer.name, 
+          email: response.customer.email,
+          phoneNumber: response.customer.phoneNumber
+        }))
+      } catch (error) {
+        Alert.alert(error);
+      } finally {
+        navigation.navigate("Home01");
+      }
     }
   };
 
-  // useEffect( () => {
-  //   const SignOut = async () => {
-  //     console.log("Sign Out");
-  //     await SecureStore.deleteItemAsync("token");
-  //     await SecureStore.deleteItemAsync("customer");
-  //   };
-  //   SignOut()
-  // }, []);
+  useEffect( () => {
+    const SignOut = async () => {
+      console.log("Sign Out");
+      await SecureStore.deleteItemAsync("token");
+      await SecureStore.deleteItemAsync("customer");
+    };
+    SignOut()
+  }, []);
 
 
   return (

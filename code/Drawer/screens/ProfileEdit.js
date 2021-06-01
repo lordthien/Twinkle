@@ -17,6 +17,7 @@ const url = "http://149.28.137.174:5000/app/me";
 
 function ProfileEdit({ navigation }) {
   const [data, setData] = useState({
+    id: "",
     name: "",
     email: "",
     phoneNumber: "",

@@ -61,7 +61,7 @@ function HomeBarber({ route, navigation, }) {
           <View>
             <Image
               style={styles.iconHeader}
-              source={require("../../../assets/images/barber1.jpeg")}
+              source={{ uri: `http://149.28.137.174:5000${store.avatar}` }}
             />
             <View style={styles.nameBarberContainer}>
               <Name textName={store.name} />

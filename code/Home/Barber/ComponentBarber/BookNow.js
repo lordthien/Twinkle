@@ -12,7 +12,7 @@ function BookNow({ onPress, title }) {
           style={{ borderRadius: 16 }}
         >
           <View style={styles.bookContainer}>
-            <Text>{title}</Text>
+            <Text style={{ fontWeight: "bold", color: "#fff" }}>{title}</Text>
           </View>
         </LinearGradient>
       </TouchableOpacity>

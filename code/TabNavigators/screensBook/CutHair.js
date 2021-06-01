@@ -18,53 +18,55 @@ export default function CutHair({
   data,
   selectedServices,
   setSelectedServices,
+  staff,
+  time,
+  store,
 }) {
-  const [selectedItem, setSelectedItem] = useState(false);
-  console.log(selectedServices);
   let dataCutHair = data.services;
-  const renderItem = ({ item, index }) => {
+  let renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
-        style={
-          selectedItem === index ? styles.midContainer : styles.midContainer
-        }
+        style={styles.midContainer}
         onPress={() => {
-          setSelectedItem(index);
           let list = selectedServices;
           if (list.filter((e) => e._id == item._id).length < 1) {
+            data.services.forEach((ser) => {
+              list = list.filter((e) => e._id !== ser._id);
+            });
             list.push(item);
             setSelectedServices(list);
             console.log(list);
+          } else {
+            if (typeof selectedServices === typeof [])
+              setSelectedServices(
+                selectedServices.filter((e) => e._id !== item._id)
+              );
           }
         }}
       >
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.listContainer}>
             <TouchableOpacity style={styles.icon}>
-              <MaterialCommunityIcons
-                name={
-                  selectedItem === index
-                    ? "checkbox-marked"
-                    : "checkbox-blank-outline"
-                }
-                size={24}
-                color="black"
-                onPress={() => {
-                  let x = !selectedItem;
-                  setSelectedItem({ selectedItem: x });
-                  if (typeof selectedServices === typeof [])
-                    setSelectedServices(
-                      selectedServices.filter((e) => e._id !== item._id)
-                    );
-                  console.log(selectedServices);
-                }}
-              />
+              {selectedServices.filter((e) => e._id == item._id).length > 0 ? (
+                <MaterialCommunityIcons
+                  name="checkbox-marked"
+                  size={24}
+                  color="black"
+                />
+              ) : (
+                <MaterialCommunityIcons
+                  name="checkbox-blank-outline"
+                  size={24}
+                  color="black"
+                />
+              )}
             </TouchableOpacity>
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
+                width: 310,
               }}
             >
               <View style={styles.titleContainer}>
@@ -98,9 +100,14 @@ export default function CutHair({
       />
       <View style={styles.bottomContainer}>
         <BookNow
-          title="Select"
+          title="BOOK"
           onPress={() => {
-            navigation.navigate("InfoBook");
+            navigation.navigate("InfoBook", {
+              services: selectedServices,
+              time: time,
+              staff: staff,
+              store: store,
+            });
           }}
         />
       </View>

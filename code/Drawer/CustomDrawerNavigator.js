@@ -1,11 +1,12 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { Feather as Icon } from "@expo/vector-icons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
+import * as SecureStore from "expo-secure-store";
 import Settings from "./screens/Settings";
 import NavigateProfile from "./screens/NavigateProfile";
-import Navigate from "../Navigate";
-// import Login from "../SignInTwinkle/SignIn/Login";
+import Navigation from "../Navigate/Navigation";
+import Login from "../SignInTwinkle/SignIn/Login";
 import BottomTab_Home01 from "../TabNavigators/BottomTab_Home01";
 import { Button, View } from "react-native";
 
@@ -33,16 +34,6 @@ const CustomDrawerNavigator = ({ navigation }) => {
         }}
       />
       <Drawer.Screen
-        name="Menu1"
-        component={Settings}
-        options={{
-          title: "Settings",
-          drawerIcon: ({ color, size }) => (
-            <Icon color={color} size={size} name="settings" />
-          ),
-        }}
-      />
-      <Drawer.Screen
         name="NavigateProfile"
         component={NavigateProfile}
         options={{
@@ -53,8 +44,18 @@ const CustomDrawerNavigator = ({ navigation }) => {
         }}
       />
       <Drawer.Screen
-        name="Navigate"
-        component={Navigate}
+        name="Menu1"
+        component={Settings}
+        options={{
+          title: "Settings",
+          drawerIcon: ({ color, size }) => (
+            <Icon color={color} size={size} name="settings" />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="Navigation"
+        component={Navigation}
         options={{
           title: "Sign out",
           drawerIcon: ({ color, size }) => (
@@ -62,9 +63,6 @@ const CustomDrawerNavigator = ({ navigation }) => {
           ),
         }}
       />
-      {/* <View>
-        <Button title="Sign out" onPress={navigation.navigate("Navigate")} />
-      </View> */}
     </Drawer.Navigator>
   );
 };

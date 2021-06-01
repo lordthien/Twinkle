@@ -40,7 +40,7 @@ function BestSalon({navigation}) {
         }}
       >
         <Image
-          source={{ uri: `http://149.28.137.174:5000/${item.avatar}` }}
+          source={{ uri: `http://149.28.137.174:5000${item.avatar}` }}
           style={styles.imageSalon}
         />
         <View style={styles.textContainer}>
@@ -60,7 +60,8 @@ function BestSalon({navigation}) {
                 : styles.textSalon
             }
           >
-            {item.star}{" "}
+            {/* {item.star}{" "} */}
+            {"4.5"} {}
             {
               <AntDesign
                 style={selectedItem === index ? "white" : "black"}

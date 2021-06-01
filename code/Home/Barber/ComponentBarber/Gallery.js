@@ -5,7 +5,7 @@ import dataGalerry from "./Data/dataGalerry";
 
 function Gallery({photos}) {
   renderItem = ({ item, index }) => {
-    console.log("http://149.28.137.174:5000/"+item.url)
+    console.log(item.url)
     return (
       <View style={styles.container}>
         <Image source={{uri:`http://149.28.137.174:5000${item.url}`}} style={styles.imageContainer} />
