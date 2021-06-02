@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ScrollView,
   SafeAreaView,
+  Alert,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
@@ -13,7 +14,7 @@ import * as SecureStore from "expo-secure-store";
 
 export default function CartScreen({ navigation }) {
   const [token, setToken] = useState("");
-  const [books, setBooks] = useState([{ store: {name: ""}}])
+  const [books, setBooks] = useState([{ _id: "", store: { name: "" } }]);
   useEffect(() => {
     async function getInformation() {
       try {
@@ -23,7 +24,7 @@ export default function CartScreen({ navigation }) {
         throw error;
       }
     }
-    getInformation()
+    getInformation();
     return;
   });
   useEffect(() => {
@@ -32,29 +33,55 @@ export default function CartScreen({ navigation }) {
       let result = await axios
         .get(url, {
           headers: {
-            'Authorization': `Bearer ${token}` 
-          }
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: `Bearer ${token}`,
+          },
         })
         .then((res) => res.data)
         .catch((err) => {
           throw err;
         });
       setBooks(result.books);
-    }
+    };
     getData();
     return;
   }, [token]);
+  let cancelBook = (id) => {
+    let link = `http://149.28.137.174:5000/app/cancel?id=${id}`;
+    // axios
+    //   .post(link, {
+    //     headers: {
+    //       "Authorization": `Bearer ${token}`,
+    //     },
+    //   })
+    fetch(link,{
+      method: 'POST', // or 'PUT'
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    }).then(res => res.json())
+      .then((res) => {
+        if (res.book.status == "CANCEL")
+          Alert.alert("Thông báo", "Đã hủy lịch hẹn!");
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.headerContainer}>
         <Text style={styles.text}>Thông Tin Đặt Lịch</Text>
       </View>
       <ScrollView>
-        {
-          books.map((book) => <View style={styles.boxService}>
+        {books.map((book) => (
+          <View style={styles.boxService}>
             <Text style={styles.text}>{book.store.name}</Text>
-          </View>)
-        }
+            <TouchableOpacity onPress={() => cancelBook(book._id)}>
+              <Text>Cancel</Text>
+            </TouchableOpacity>
+          </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
