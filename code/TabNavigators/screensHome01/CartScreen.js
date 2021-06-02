@@ -13,7 +13,7 @@ import * as SecureStore from "expo-secure-store";
 
 export default function CartScreen({ navigation }) {
   const [token, setToken] = useState("");
-  const [books, setBooks] = useState({ store: {name: ""}})
+  const [books, setBooks] = useState([{ store: {name: ""}}])
   useEffect(() => {
     async function getInformation() {
       try {
@@ -44,8 +44,6 @@ export default function CartScreen({ navigation }) {
     getData();
     return;
   }, [token]);
-  // let { services, store, totalPrice, totalDuration, schedule } = books
-  // schedule = new Date(schedule)
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.headerContainer}>
@@ -53,11 +51,9 @@ export default function CartScreen({ navigation }) {
       </View>
       <ScrollView>
         {
-          books.map(book => (<View style={styles.boxService}>
-            <Text style={styles.text}>{books[0].store.name}</Text>
-            {/* <Text style={styles.text}>"Barber A Thien"</Text> */}
-            {/* <Text style={styles.text}>"Barber A Thien"</Text> */}
-          </View>))
+          books.map((book) => <View style={styles.boxService}>
+            <Text style={styles.text}>{book.store.name}</Text>
+          </View>)
         }
       </ScrollView>
     </SafeAreaView>
