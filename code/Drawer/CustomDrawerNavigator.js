@@ -5,10 +5,9 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import * as SecureStore from "expo-secure-store";
 import Settings from "./screens/Settings";
 import NavigateProfile from "./screens/NavigateProfile";
-import Navigation from "../Navigate/Navigation";
+import Navigate from "../Navigate";
 import Login from "../SignInTwinkle/SignIn/Login";
 import BottomTab_Home01 from "../TabNavigators/BottomTab_Home01";
-import { Button, View } from "react-native";
 
 const Drawer = createDrawerNavigator();
 
@@ -54,8 +53,8 @@ const CustomDrawerNavigator = ({ navigation }) => {
         }}
       />
       <Drawer.Screen
-        name="Navigation"
-        component={Navigation}
+        name="Navigate"
+        component={Navigate}
         options={{
           title: "Sign out",
           drawerIcon: ({ color, size }) => (

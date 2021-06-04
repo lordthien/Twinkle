@@ -12,7 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 
-export default function CartScreen({ navigation }) {
+export default function CartCancel({ navigation }) {
   const [token, setToken] = useState("");
   const [books, setBooks] = useState([
     { _id: "", store: { name: "", price: "" } },
@@ -32,9 +32,9 @@ export default function CartScreen({ navigation }) {
   useEffect(() => {
     let getData = async () => {
       //cancelBooks => canceled || unpaidBooks => booked || paidBooks => completed
-      // let url = `http://149.28.137.174:5000/app/cancelBooks`;
+      let url = `http://149.28.137.174:5000/app/cancelBooks`;
       // let url = `http://149.28.137.174:5000/app/paidBooks`;
-      let url = `http://149.28.137.174:5000/app/unpaidBooks`;
+      //   let url = `http://149.28.137.174:5000/app/unpaidBooks`;
       let result = await axios
         .get(url, {
           headers: {
@@ -82,9 +82,9 @@ export default function CartScreen({ navigation }) {
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <TouchableOpacity
           style={styles.headerContainer2}
-          onPress={navigation.navigate("CartCancel")}
+          onPress={navigation.navigate("CartScreen")}
         >
-          <Text style={styles.textBoxBold}>Canceled</Text>
+          <Text style={styles.textBoxBold}>Booked</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.headerContainer2}

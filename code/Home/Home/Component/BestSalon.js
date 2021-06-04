@@ -8,18 +8,25 @@ import { AntDesign } from "@expo/vector-icons";
 
 const url = "http://149.28.137.174:5000/app/allStores";
 
-function BestSalon({navigation}) {
+function BestSalon({ navigation }) {
   const [data, setData] = useState({ stores: [] });
   const [selectedItem, setSelectedItem] = useState(0);
   useEffect(() => {
     let getData = async () => {
-      let result = await axios.get(url)
-      .then((res) => res.data)
-      .catch((err) => {
-        throw err;
-      });
-      result.stores=result.stores.map((e) => {
-        return { id: e._id, name: e.name, avatar: e.avatar, address: e.address, star: e.averagePoint };
+      let result = await axios
+        .get(url)
+        .then((res) => res.data)
+        .catch((err) => {
+          throw err;
+        });
+      result.stores = result.stores.map((e) => {
+        return {
+          id: e._id,
+          name: e.name,
+          avatar: e.avatar,
+          address: e.address,
+          star: e.averagePoint,
+        };
       });
       setData(result);
     };
@@ -36,7 +43,7 @@ function BestSalon({navigation}) {
         }
         onPress={() => {
           setSelectedItem(index);
-          navigation.navigate("HomeBarber", {id: item.id});
+          navigation.navigate("HomeBarber", { id: item.id });
         }}
       >
         <Image
@@ -60,7 +67,6 @@ function BestSalon({navigation}) {
                 : styles.textSalon
             }
           >
-            {/* {item.star}{" "} */}
             {"4.5"} {}
             {
               <AntDesign

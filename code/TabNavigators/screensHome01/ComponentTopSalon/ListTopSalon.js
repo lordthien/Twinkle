@@ -4,11 +4,10 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 import * as SecureStore from "expo-secure-store";
 import axios from "axios";
-
 import { AntDesign } from "@expo/vector-icons";
 
-function BestSalon({ onPress, query, navigation }) {
-  // const [selectedItem, setSelectedItem] = React.useState(0);
+function ListTopSalon({ onPress, query, navigation }) {
+
   let url = `http://149.28.137.174:5000/app/search?q=${String(
     query
   ).toLowerCase()}`;
@@ -51,7 +50,7 @@ function BestSalon({ onPress, query, navigation }) {
         }}
       >
         <Image
-          source={{ uri: `http://149.28.137.174:5000/${item.avatar}` }}
+          source={{ uri: `http://149.28.137.174:5000${item.avatar}` }}
           style={styles.imageSalon}
         />
         <View style={styles.textContainer}>
@@ -71,7 +70,7 @@ function BestSalon({ onPress, query, navigation }) {
                 : styles.textSalon
             }
           >
-            {item.star}{" "}
+            {"4.5"} {""}
             {
               <AntDesign
                 style={selectedItem === index ? "white" : "black"}
@@ -177,4 +176,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BestSalon;
+export default ListTopSalon;

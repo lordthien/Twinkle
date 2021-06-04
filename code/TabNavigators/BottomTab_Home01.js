@@ -6,7 +6,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home01 from "../Home/Home/Home01";
 import TopSalonScreen from "./screensHome01/TopSalonScreen";
-import CartScreen from "./screensHome01/CartScreen";
+// import CartScreen from "./screensHome01/CartScreen";
+import NavigationCart from "../Navigate/Cart/NavigationCart";
 import NotificationScreen from "./screensHome01/NotificationScreen";
 
 const Tab = createBottomTabNavigator();
@@ -56,8 +57,8 @@ export default function BottomTab_Home01() {
         />
 
         <Tab.Screen
-          name="CartScreen"
-          component={CartScreen}
+          name="NavigationCart"
+          component={NavigationCart}
           options={{
             tabBarIcon: ({ focused, color, size }) => {
               if (focused) {

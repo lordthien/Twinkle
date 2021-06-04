@@ -19,30 +19,13 @@ import MaterialTopTab_Book from "../TabNavigators/MaterialTopTab_Book";
 import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
 
-import { createDrawerNavigator } from "@react-navigation/drawer";
-const Drawer = createDrawerNavigator();
-
 export default function Navigate() {
   return (
     <Stack.Navigator /*headerMode="screen"*/>
-      {/* <Stack.Screen
-        name="Home01"
-        component={CustomDrawerNavigator}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
       <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{
-          headerShown: false,
-        }}
       />
       {/* ---------------------------- */}
       <Stack.Screen
@@ -99,6 +82,14 @@ export default function Navigate() {
       <Stack.Screen
         name="InfoBook"
         component={InfoBook}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* -------------------------- */}
+      <Stack.Screen
+        name="SignUp"
+        component={SignUp}
         options={{
           headerShown: false,
         }}

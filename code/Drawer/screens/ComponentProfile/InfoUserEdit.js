@@ -20,7 +20,7 @@ export default function InfoUser({ name, email, phone }) {
       </View>
       <View style={styles.boxContainer}>
         <Text style={styles.nameContainer}>Phone Number</Text>
-        <TextInput style={styles.textName} placeholder={"0123456789"}>{phone}</TextInput>
+        <TextInput style={styles.textName}>{phone}</TextInput>
       </View>
     </View>
   );

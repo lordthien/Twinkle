@@ -1,16 +1,9 @@
 import React, { useEffect } from "react";
-import {
-  SafeAreaView,
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  Alert,
-} from "react-native";
+import { SafeAreaView, View, StyleSheet, Image, Alert } from "react-native";
 import { Ionicons as Icon } from "@expo/vector-icons";
 import axios from "axios";
 import * as Facebook from "expo-facebook";
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from "expo-secure-store";
 
 import Logo from "../Component/Logo";
 import Header from "../Component/Header";
@@ -73,14 +66,16 @@ function Login({ navigation }) {
     } else {
       try {
         await SecureStore.setItemAsync("token", response.token);
-        await SecureStore.setItemAsync("customer", 
-        JSON.stringify({
-          id: response.customer._id,
-          avatar: response.customer.avatar,
-          name: response.customer.name, 
-          email: response.customer.email,
-          phoneNumber: response.customer.phoneNumber
-        }))
+        await SecureStore.setItemAsync(
+          "customer",
+          JSON.stringify({
+            id: response.customer._id,
+            avatar: response.customer.avatar,
+            name: response.customer.name,
+            email: response.customer.email,
+            phoneNumber: response.customer.phoneNumber,
+          })
+        );
       } catch (error) {
         Alert.alert(error);
       } finally {
@@ -89,15 +84,30 @@ function Login({ navigation }) {
     }
   };
 
-  useEffect( () => {
+  useEffect(() => {
     const SignOut = async () => {
       console.log("Sign Out");
       await SecureStore.deleteItemAsync("token");
       await SecureStore.deleteItemAsync("customer");
+      //
+      // let token = await SecureStore.getItemAsync("token")
+      // let logout = await fetch(`${url}/logout`, {
+      //   method: "POST", // or 'PUT'
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "Authorization": `Bearer ${token}`
+      //   }
+      // }).then(response => response.json())
+      //   .catch((error) => {
+      //     console.log(error);
+      //   });
+      // console.log(logout)
+      // if(logout.status=="Success") Alert.alert("Thông báo", "Đăng xuất thành công")
+      // await SecureStore.deleteItemAsync("token");
+      // await SecureStore.deleteItemAsync("customer");
     };
-    SignOut()
+    SignOut();
   }, []);
-
 
   return (
     <SafeAreaView style={styles.container}>

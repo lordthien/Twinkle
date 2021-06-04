@@ -60,7 +60,6 @@ const MaterialTopTab_Book = ({ navigation, route }) => {
             width: 128,
             justifyContent: "center",
             alignItems: "center",
-            //marginTop: 80,
           },
           indicatorStyle: {
             backgroundColor: ACTIVE_COLOR,

@@ -14,7 +14,6 @@ import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 import TextHeaderInfo from "./ComponentInfoBook/TextHeaderInfo";
 import BookNow from "../Barber/ComponentBarber/BookNow";
-import BoxServiceSelect from "./ComponentInfoBook/BoxServiceSelect";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -114,7 +113,7 @@ function InfoBook({ navigation, route }) {
           />
         </TouchableOpacity>
         <View style={styles.headerContainer}>
-          <Text style={styles.text}>Thông Tin Đặt Lịch</Text>
+          <Text style={styles.textBold}>Thông Tin Đặt Lịch</Text>
         </View>
       </View>
 
@@ -231,6 +230,10 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: "500",
+  },
+  textBold: {
+    fontSize: 17,
+    fontWeight: "600",
   },
   boxService: {
     backgroundColor: "#ecf0f1",

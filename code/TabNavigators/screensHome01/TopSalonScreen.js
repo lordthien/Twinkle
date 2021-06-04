@@ -25,10 +25,7 @@ export default function TopSalonScreen({ navigation }) {
         />
       </View>
       <View style={{ flex: 1 }}>
-        <ListTopSalon
-          query={query}
-          navigation={navigation}
-        />
+        <ListTopSalon query={query} navigation={navigation} />
       </View>
     </SafeAreaView>
   );
@@ -44,14 +41,15 @@ const styles = StyleSheet.create({
     marginLeft: 87,
     height: 40,
     width: 200,
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#FF6C44",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
   },
   text: {
     fontSize: 16,
-    fontWeight: "500",
+    fontWeight: "bold",
+    color: "#fff",
   },
   find: {
     flexDirection: "row",
