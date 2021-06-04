@@ -6,7 +6,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Home01 from "../Home/Home/Home01";
 import TopSalonScreen from "./screensHome01/TopSalonScreen";
-// import CartScreen from "./screensHome01/CartScreen";
 import NavigationCart from "../Navigate/Cart/NavigationCart";
 import NotificationScreen from "./screensHome01/NotificationScreen";
 

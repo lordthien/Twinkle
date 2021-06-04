@@ -13,14 +13,14 @@ import {
 import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 import TextHeaderInfo from "./ComponentInfoBook/TextHeaderInfo";
-import BookNow from "../Barber/ComponentBarber/BookNow";
+import BookNow from "../../../../Home/Barber/ComponentBarber/BookNow";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
-function InfoBook({ navigation, route }) {
+function InfoBookScreen({ navigation, route }) {
   const [staff, setStaff] = useState({ name: "" });
   const [store, setStore] = useState({ name: "" });
   const [note, setNote] = useState("");
@@ -98,7 +98,7 @@ function InfoBook({ navigation, route }) {
       }
     );
     console.log(result);
-    Alert.alert("Notification", "You have booked a schedule");
+    Alert.alert("Notification", "You have update booked a schedule");
   };
 
   return (
@@ -178,10 +178,10 @@ function InfoBook({ navigation, route }) {
       </ScrollView>
       <View style={styles.bottomContainer}>
         <BookNow
-          title="COMPLETE"
+          title="SAVE"
           onPress={() => {
             pressBook();
-            navigation.navigate("Home01");
+            navigation.navigate("CartScreen");
           }}
         />
       </View>
@@ -261,10 +261,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     alignItems: "center",
   },
-
   boxServices: {
     marginLeft: 12,
     marginTop: 10,
   },
 });
-export default InfoBook;
+export default InfoBookScreen;

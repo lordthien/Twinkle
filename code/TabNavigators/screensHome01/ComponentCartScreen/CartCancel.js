@@ -77,18 +77,18 @@ export default function CartCancel({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.headerContainer}>
-        <Text style={styles.textBoxBold}>Book Information</Text>
+        <Text style={styles.textBoxBold}>Book Canceled Information</Text>
       </View>
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <TouchableOpacity
           style={styles.headerContainer2}
-          onPress={navigation.navigate("CartScreen")}
+          onPress={() => navigation.navigate("CartScreen")}
         >
           <Text style={styles.textBoxBold}>Booked</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.headerContainer2}
-          onPress={navigation.navigate("CartCompleted")}
+          onPress={() => navigation.navigate("CartCompleted")}
         >
           <Text style={styles.textBoxBold}>Completed</Text>
         </TouchableOpacity>
@@ -116,14 +116,13 @@ export default function CartCancel({ navigation }) {
             <View style={styles.textPrice}>
               {/* <Text style={styles.text}>{book.store.price}</Text> */}
               <Text style={styles.textBold}>{book.cost / 1000}K</Text>
+              <TouchableOpacity
+                style={styles.boxCancel}
+                // onPress={() => cancelBook(book._id)}
+              >
+                <Text style={styles.textBoxBold}>Canceled</Text>
+              </TouchableOpacity>
             </View>
-
-            <TouchableOpacity
-              style={styles.boxCancel}
-              onPress={() => cancelBook(book._id)}
-            >
-              <Text style={styles.textBoxBold}>Cancel</Text>
-            </TouchableOpacity>
           </View>
         ))}
       </ScrollView>
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
     marginTop: 12,
     marginBottom: 8,
     height: 40,
-    width: 200,
+    width: 250,
     backgroundColor: "#FF6C44",
     justifyContent: "center",
     alignItems: "center",
@@ -170,12 +169,11 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   textPrice: {
-    width: 50,
     justifyContent: "center",
     alignItems: "center",
   },
   boxService: {
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#bdc3c7",
     height: 107,
     width: 345,
     marginTop: 12,
@@ -185,7 +183,7 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   boxCancel: {
-    width: 80,
+    width: 100,
     height: 45,
     marginTop: 19,
     justifyContent: "center",

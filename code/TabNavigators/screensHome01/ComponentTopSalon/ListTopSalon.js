@@ -88,7 +88,7 @@ function ListTopSalon({ onPress, query, navigation }) {
                 : styles.textStreet
             }
           >
-            {item.street}
+            {item.address}
           </Text>
         </View>
       </TouchableOpacity>

@@ -77,18 +77,18 @@ export default function CartScreen({ navigation }) {
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
       <View style={styles.headerContainer}>
-        <Text style={styles.textBoxBold}>Book Information</Text>
+        <Text style={styles.textBoxBold}>Booked Information</Text>
       </View>
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <TouchableOpacity
           style={styles.headerContainer2}
-          onPress={navigation.navigate("CartCancel")}
+          onPress={() => navigation.navigate("CartCancel")}
         >
           <Text style={styles.textBoxBold}>Canceled</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.headerContainer2}
-          onPress={navigation.navigate("CartCompleted")}
+          onPress={() => navigation.navigate("CartCompleted")}
         >
           <Text style={styles.textBoxBold}>Completed</Text>
         </TouchableOpacity>
@@ -96,7 +96,10 @@ export default function CartScreen({ navigation }) {
       <ScrollView showsVerticalScrollIndicator={false}>
         {books.map((book) => (
           <View style={styles.boxService}>
-            <View style={{ width: 172 }}>
+            <TouchableOpacity
+              style={{ width: 172 }}
+              // onPress={() => navigation.navigate("InfoBookScreen")}
+            >
               <View style={{ marginBottom: 9 }}>
                 <Text style={styles.textBold}>{book.store.name}</Text>
               </View>
@@ -112,18 +115,18 @@ export default function CartScreen({ navigation }) {
                   Combo VIP Cat Goi - Goi - Cao rau
                 </Text>
               </View>
-            </View>
+            </TouchableOpacity>
             <View style={styles.textPrice}>
               {/* <Text style={styles.text}>{book.store.price}</Text> */}
               <Text style={styles.textBold}>{book.cost / 1000}K</Text>
-            </View>
 
-            <TouchableOpacity
-              style={styles.boxCancel}
-              onPress={() => cancelBook(book._id)}
-            >
-              <Text style={styles.textBoxBold}>Cancel</Text>
-            </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.boxCancel}
+                onPress={() => cancelBook(book._id)}
+              >
+                <Text style={styles.textBoxBold}>Cancel</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         ))}
       </ScrollView>
@@ -170,12 +173,11 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   textPrice: {
-    width: 50,
     justifyContent: "center",
     alignItems: "center",
   },
   boxService: {
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#bdc3c7",
     height: 107,
     width: 345,
     marginTop: 12,
