@@ -22,10 +22,11 @@ export default function CutHair({
   time,
   store,
 }) {
-  let dataCutHair = data.services;
+  // let dataCutHair = data.services;
   let renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
+        key={index}
         style={styles.midContainer}
         onPress={() => {
           let list = selectedServices;
@@ -66,7 +67,7 @@ export default function CutHair({
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                width: 310,
+                width: 300,
               }}
             >
               <View style={styles.titleContainer}>
@@ -92,10 +93,11 @@ export default function CutHair({
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={dataCutHair}
+        // data={dataCutHair}
+        data={data.services}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "cuthair-" + item.id;
+          return /*"cuthair-" +*/ item.id;
         }}
       />
       <View style={styles.bottomContainer}>

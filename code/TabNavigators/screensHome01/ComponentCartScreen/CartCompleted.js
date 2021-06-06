@@ -76,21 +76,21 @@ export default function CartCompleted({ navigation }) {
   };
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.textBoxBold}>Book Completed Information</Text>
-      </View>
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <TouchableOpacity
-          style={styles.headerContainer2}
+          style={styles.headerContainer3}
           onPress={() => navigation.navigate("CartScreen")}
         >
           <Text style={styles.textBoxBold}>Booked</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.headerContainer2}
+          style={styles.headerContainer3}
           onPress={() => navigation.navigate("CartCancel")}
         >
           <Text style={styles.textBoxBold}>Canceled</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.headerContainer2}>
+          <Text style={styles.textBoxBold}>Completed</Text>
         </TouchableOpacity>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -114,13 +114,12 @@ export default function CartCompleted({ navigation }) {
               </View>
             </View>
             <View style={styles.textPrice}>
-              {/* <Text style={styles.text}>{book.store.price}</Text> */}
               <Text style={styles.textBold}>{book.cost / 1000}K</Text>
-              <TouchableOpacity
-                style={styles.boxCancel}
-                // onPress={() => cancelBook(book._id)}
-              >
+              <View style={styles.boxCancel}>
                 <Text style={styles.textBoxBold}>Completed</Text>
+              </View>
+              <TouchableOpacity style={styles.boxCancel}>
+                <Text style={styles.textBoxBold}>Review</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -133,27 +132,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerContainer: {
+  headerContainer3: {
     marginTop: 12,
     marginBottom: 8,
     height: 40,
-    width: 250,
-    backgroundColor: "#FF6C44",
+    width: 112,
+    backgroundColor: "#FF6C4450",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
+    marginLeft: 4,
+    marginRight: 4,
   },
   headerContainer2: {
     marginTop: 12,
     marginBottom: 8,
     height: 40,
-    width: 150,
+    width: 112,
     backgroundColor: "#FF6C44",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
-    marginLeft: 12,
-    marginRight: 12,
+    marginLeft: 4,
+    marginRight: 4,
   },
   text: {
     fontSize: 14,
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
   },
   boxService: {
     backgroundColor: "#bdc3c7",
-    height: 107,
+    height: 120,
     width: 345,
     marginTop: 12,
     borderRadius: 8,
@@ -183,9 +184,10 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   boxCancel: {
-    width: 80,
-    height: 45,
-    marginTop: 19,
+    width: 105,
+    height: 38,
+    // marginTop: 19,
+    marginBottom: 6,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FF6C44",

@@ -36,6 +36,7 @@ function BestSalon({ navigation }) {
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
+        key={index}
         style={
           selectedItem === index
             ? styles.buttonSalonSelected
@@ -100,7 +101,7 @@ function BestSalon({ navigation }) {
         data={data.stores}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "bestsalon-" + item.id;
+          return /*"bestsalon-" +*/ item.id;
         }}
       />
     </View>

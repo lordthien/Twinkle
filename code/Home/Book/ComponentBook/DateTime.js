@@ -12,7 +12,7 @@ export default function DateTime({ dates, selectDate, setSelectDate }) {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View style={styles.timeContainer}>
+      <View style={styles.timeContainer} key={index}>
         <TouchableOpacity
           style={
             selectedItem === index
@@ -57,7 +57,7 @@ export default function DateTime({ dates, selectDate, setSelectDate }) {
         data={dates}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "datetime-" + item.id;
+          return /*"datetime-" +*/ item.id;
         }}
       />
     </View>

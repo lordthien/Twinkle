@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   StyleSheet,
@@ -24,23 +24,26 @@ import Gallery from "./ComponentBarber/Gallery";
 import BookNow from "./ComponentBarber/BookNow";
 import axios from "axios";
 
-function HomeBarber({ route, navigation, }) {
+function HomeBarber({ route, navigation }) {
   const [store, setStore] = useState({});
   const [selectedItem, setSelectedItem] = useState(0);
   const url = `http://149.28.137.174:5000/app/storeById?id=${route.params.id}`;
+
   useEffect(() => {
-    console.log(route.params.id)
+    // console.log(route.params.id)
     let getData = async () => {
-      let result = await axios.get(url)
-      .then((res) => res.data)
-      .catch((err) => {
-        throw err;
-      });
+      let result = await axios
+        .get(url)
+        .then((res) => res.data)
+        .catch((err) => {
+          throw err;
+        });
       setStore(result.store);
     };
     getData();
     return;
   }, []);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -125,7 +128,7 @@ function HomeBarber({ route, navigation, }) {
         <BookNow
           title="Book Now"
           onPress={() => {
-            navigation.navigate("Book", {storeId: store._id});
+            navigation.navigate("Book", { storeId: store._id });
           }}
         />
       </View>

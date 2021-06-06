@@ -76,55 +76,63 @@ export default function CartCancel({ navigation }) {
   };
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.textBoxBold}>Book Canceled Information</Text>
-      </View>
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <TouchableOpacity
-          style={styles.headerContainer2}
+          style={styles.headerContainer3}
           onPress={() => navigation.navigate("CartScreen")}
         >
           <Text style={styles.textBoxBold}>Booked</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.headerContainer2}>
+          <Text style={styles.textBoxBold}>Canceled</Text>
+        </TouchableOpacity>
         <TouchableOpacity
-          style={styles.headerContainer2}
+          style={styles.headerContainer3}
           onPress={() => navigation.navigate("CartCompleted")}
         >
           <Text style={styles.textBoxBold}>Completed</Text>
         </TouchableOpacity>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {books.map((book) => (
-          <View style={styles.boxService}>
-            <View style={{ width: 172 }}>
-              <View style={{ marginBottom: 9 }}>
-                <Text style={styles.textBold}>{book.store.name}</Text>
-              </View>
-              <View style={{ marginBottom: 8 }}>
-                <Text style={styles.text}>
-                  {new Date(book.schedule).toTimeString("VN").slice(0, 5)}
-                  {` - `}
-                  {new Date(book.schedule).toLocaleDateString("VN")}
-                </Text>
-              </View>
-              <View style={{}}>
+        {books.map(
+          (book) => (
+            // console.log(book),
+            // console.log("---------"),
+            (
+              <View style={styles.boxService}>
+                <View style={{ width: 172 }}>
+                  <View style={{ marginBottom: 9 }}>
+                    <Text style={styles.textBold}>{book.store.name}</Text>
+                  </View>
+                  <View style={{ marginBottom: 8 }}>
+                    <Text style={styles.text}>
+                      {new Date(book.schedule).toTimeString("VN").slice(0, 5)}
+                      {` - `}
+                      {new Date(book.schedule).toLocaleDateString("VN")}
+                    </Text>
+                  </View>
+                  {/* <View style={{}}>
                 <Text style={styles.text}>
                   Combo VIP Cat Goi - Goi - Cao rau
                 </Text>
+              </View> */}
+                  {/* {book.services.map((e) => (
+                <View style={{ marginBottom: 6 }}>
+                  <Text style={styles.text}>- {e.name}</Text>
+                </View>
+              ))} */}
+                </View>
+                <View style={styles.textPrice}>
+                  {/* <Text style={styles.text}>{book.store.price}</Text> */}
+                  <Text style={styles.textBold}>{book.cost / 1000}K</Text>
+                  <View style={styles.boxCancel}>
+                    <Text style={styles.textBoxBold}>Canceled</Text>
+                  </View>
+                </View>
               </View>
-            </View>
-            <View style={styles.textPrice}>
-              {/* <Text style={styles.text}>{book.store.price}</Text> */}
-              <Text style={styles.textBold}>{book.cost / 1000}K</Text>
-              <TouchableOpacity
-                style={styles.boxCancel}
-                // onPress={() => cancelBook(book._id)}
-              >
-                <Text style={styles.textBoxBold}>Canceled</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        ))}
+            )
+          )
+        )}
       </ScrollView>
     </SafeAreaView>
   );
@@ -133,27 +141,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerContainer: {
+  headerContainer3: {
     marginTop: 12,
     marginBottom: 8,
     height: 40,
-    width: 250,
-    backgroundColor: "#FF6C44",
+    width: 112,
+    backgroundColor: "#FF6C4450",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
+    marginLeft: 4,
+    marginRight: 4,
   },
   headerContainer2: {
     marginTop: 12,
     marginBottom: 8,
     height: 40,
-    width: 150,
+    width: 112,
     backgroundColor: "#FF6C44",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
-    marginLeft: 12,
-    marginRight: 12,
+    marginLeft: 4,
+    marginRight: 4,
   },
   text: {
     fontSize: 14,

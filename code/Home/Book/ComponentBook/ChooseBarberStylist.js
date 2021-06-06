@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,25 +13,28 @@ import { AntDesign } from "@expo/vector-icons";
 import dataBarber from "./dataBarber/dataBarber";
 
 export default function ChooseBarber({ route, storeId, staff, setStaff }) {
-  const url = `http://149.28.137.174:5000/app/staffsByStoreId?id=${storeId}`
+  const url = `http://149.28.137.174:5000/app/staffsByStoreId?id=${storeId}`;
   const [selectedItem, setSelectedItem] = useState();
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
   useEffect(() => {
     let getData = async () => {
-      let result = await axios.get(url)
-      .then((res) => res.data)
-      .catch((err) => {
-        throw err;
-      });
-      result=result.staffs.map((e) => {
+      let result = await axios
+        .get(url)
+        .then((res) => res.data)
+        .catch((err) => {
+          throw err;
+        });
+      result = result.staffs.map((e) => {
         return {
           _id: e._id,
-          name: e.name.slice(e.name.slice(0,e.name.lastIndexOf(" ")).lastIndexOf(" ")),
+          name: e.name.slice(
+            e.name.slice(0, e.name.lastIndexOf(" ")).lastIndexOf(" ")
+          ),
           avatar: e.avatar,
           services: e.services,
-          star: 4.5
-        }
-      })
+          star: 4.5,
+        };
+      });
       setData(result);
     };
     getData();
@@ -40,6 +43,7 @@ export default function ChooseBarber({ route, storeId, staff, setStaff }) {
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
+        key={index}
         style={
           selectedItem === index
             ? styles.buttonSalonSelected
@@ -47,10 +51,13 @@ export default function ChooseBarber({ route, storeId, staff, setStaff }) {
         }
         onPress={() => {
           setSelectedItem(index);
-          setStaff(item._id)
+          setStaff(item._id);
         }}
       >
-        <Image source={{uri: `http://149.28.137.174:5000${item.avatar}`}} style={styles.imageSalon} />
+        <Image
+          source={{ uri: `http://149.28.137.174:5000${item.avatar}` }}
+          style={styles.imageSalon}
+        />
 
         <View style={styles.textContainer}>
           <Text
@@ -90,7 +97,7 @@ export default function ChooseBarber({ route, storeId, staff, setStaff }) {
         data={data}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "barber-" + item.id;
+          return /*"barber-" +*/ item.id;
         }}
       />
     </View>

@@ -15,7 +15,7 @@ import * as SecureStore from "expo-secure-store";
 export default function CartScreen({ navigation }) {
   const [token, setToken] = useState("");
   const [books, setBooks] = useState([
-    { _id: "", store: { name: "", price: "" } },
+    { services: [], _id: "", store: { name: "", price: "" } },
   ]);
   useEffect(() => {
     async function getInformation() {
@@ -53,18 +53,18 @@ export default function CartScreen({ navigation }) {
   });
   let cancelBook = (id) => {
     let link = `http://149.28.137.174:5000/app/cancel?id=${id}`;
-    // axios
-    //   .post(link, {
-    //     headers: {
-    //       "Authorization": `Bearer ${token}`,
-    //     },
-    //   })
-    fetch(link, {
-      method: "POST", // or 'PUT'
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    axios
+      .post(link, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      // fetch(link, {
+      //   method: "POST", // or 'PUT'
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // })
       .then((res) => res.json())
       .then((res) => {
         if (res.book.status == "CANCEL")
@@ -76,26 +76,28 @@ export default function CartScreen({ navigation }) {
   };
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.textBoxBold}>Booked Information</Text>
-      </View>
-      <View style={{ flexDirection: "row", justifyContent: "center" }}>
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity style={styles.headerContainer2}>
+          <Text style={styles.textBoxBold}>Booked</Text>
+        </TouchableOpacity>
         <TouchableOpacity
-          style={styles.headerContainer2}
+          style={styles.headerContainer3}
           onPress={() => navigation.navigate("CartCancel")}
         >
           <Text style={styles.textBoxBold}>Canceled</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles.headerContainer2}
+          style={styles.headerContainer3}
           onPress={() => navigation.navigate("CartCompleted")}
         >
           <Text style={styles.textBoxBold}>Completed</Text>
         </TouchableOpacity>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {books.map((book) => (
-          <View style={styles.boxService}>
+        {books.map((book, index) => (
+          // console.log(book),
+          // console.log("---------"),
+          <View key={index} style={styles.boxService}>
             <TouchableOpacity
               style={{ width: 172 }}
               // onPress={() => navigation.navigate("InfoBookScreen")}
@@ -110,11 +112,14 @@ export default function CartScreen({ navigation }) {
                   {new Date(book.schedule).toLocaleDateString("VN")}
                 </Text>
               </View>
-              <View style={{}}>
-                <Text style={styles.text}>
-                  Combo VIP Cat Goi - Goi - Cao rau
-                </Text>
-              </View>
+
+              {/* <Text style={styles.text}>{services.name}</Text> */}
+
+              {book.services.map((e) => (
+                <View style={{ marginBottom: 6 }}>
+                  <Text style={styles.text}>- {e.name}</Text>
+                </View>
+              ))}
             </TouchableOpacity>
             <View style={styles.textPrice}>
               {/* <Text style={styles.text}>{book.store.price}</Text> */}
@@ -137,27 +142,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerContainer: {
+  headerContainer3: {
     marginTop: 12,
     marginBottom: 8,
     height: 40,
-    width: 200,
-    backgroundColor: "#FF6C44",
+    width: 112,
+    backgroundColor: "#FF6C4450",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
+    marginLeft: 4,
+    marginRight: 4,
   },
   headerContainer2: {
     marginTop: 12,
     marginBottom: 8,
     height: 40,
-    width: 150,
+    width: 112,
     backgroundColor: "#FF6C44",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 12,
-    marginLeft: 12,
-    marginRight: 12,
+    marginLeft: 4,
+    marginRight: 4,
   },
   text: {
     fontSize: 14,
@@ -178,7 +185,7 @@ const styles = StyleSheet.create({
   },
   boxService: {
     backgroundColor: "#bdc3c7",
-    height: 107,
+    // height: 107,
     width: 345,
     marginTop: 12,
     borderRadius: 8,

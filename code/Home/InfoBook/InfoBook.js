@@ -129,7 +129,7 @@ function InfoBook({ navigation, route }) {
             {route.params.services.map((e) => (
               <View style={styles.boxServices}>
                 <Text style={styles.text}>
-                  {e.name} - {e.price / 1000}K
+                  - {e.name} - {e.price / 1000}K
                 </Text>
               </View>
             ))}
@@ -221,9 +221,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   boxService: {
-    backgroundColor: "#ecf0f1",
-    height: 95,
-    marginTop: 12,
+    backgroundColor: "#bdc3c750",
     marginRight: 12,
     borderRadius: 8,
   },
@@ -238,7 +236,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     height: 56,
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#bdc3c750",
     borderRadius: 8,
     marginRight: 12,
   },
@@ -247,13 +245,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#ecf0f1",
+    backgroundColor: "#bdc3c750",
     padding: 12,
     marginRight: 12,
     borderRadius: 8,
   },
   inputText: {
-    fontSize: 14,
+    fontSize: 16,
     color: "#898B9A",
   },
   bottomContainer: {
@@ -264,7 +262,8 @@ const styles = StyleSheet.create({
 
   boxServices: {
     marginLeft: 12,
-    marginTop: 10,
+    marginTop: 8,
+    marginBottom: 8,
   },
 });
 export default InfoBook;

@@ -46,18 +46,17 @@ const MaterialTopTab_Book = ({ navigation, route }) => {
         </TouchableOpacity>
       </View>
       <Tab.Navigator
-        // initialRouteName="More"
         tabBarPosition="top"
         tabBarOptions={{
           activeTintColor: ACTIVE_COLOR,
           inactiveTintColor: INACTIVE_COLOR,
           style: { backgroundColor: "white" },
           labelStyle: { textTransform: "none", fontSize: 16 },
-          // scrollEnabled: true,
+          scrollEnabled: true,
           showIcon: true,
           showLabel: true,
           tabStyle: {
-            width: 128,
+            width: 113,
             justifyContent: "center",
             alignItems: "center",
           },
@@ -66,9 +65,11 @@ const MaterialTopTab_Book = ({ navigation, route }) => {
           },
         }}
         sceneContainerStyle={{ backgroundColor: "gray" }}
+        // pager={(props) => <CutHair {...props} />}
       >
-        {types.map((type) => (
+        {types.map((type, index) => (
           <Tab.Screen
+            key={index}
             name={`${type.name}`}
             component={() => (
               <CutHair
@@ -79,13 +80,15 @@ const MaterialTopTab_Book = ({ navigation, route }) => {
                 store={route.params.storeId}
                 staff={route.params.staff}
                 time={route.params.selectTime}
+                // initialParams={{ catId: navigation.params }}
+                // {...props}
               />
             )}
             options={{
               title: `${type.name}`,
               tabBarIcon: ({ focused, color }) => (
                 <FontAwesome5
-                  name={focused ? type.iconString : type.iconString }
+                  name={focused ? type.iconString : type.iconString}
                   size={ICON_SIZE}
                   color={color}
                 />

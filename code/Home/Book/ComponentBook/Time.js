@@ -12,7 +12,7 @@ export default function Time({ times, selectDate, selectTime, setSelectTime }) {
 
   const renderItem = ({ item, index }) => {
     return (
-      <View style={styles.timeContainer}>
+      <View style={styles.timeContainer} key={index}>
         <TouchableOpacity
           style={
             selectedItem === index
@@ -46,7 +46,7 @@ export default function Time({ times, selectDate, selectTime, setSelectTime }) {
         data={times}
         renderItem={renderItem}
         keyExtractor={(item, index) => {
-          return "time-" + item.id;
+          return /*"time-" +*/ item.id;
         }}
       />
     </View>

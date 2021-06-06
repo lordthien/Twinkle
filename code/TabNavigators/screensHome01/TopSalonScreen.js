@@ -12,7 +12,7 @@ export default function TopSalonScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.text}>Search</Text>
+        <Text style={styles.text}>Search All Salon</Text>
       </View>
       <View style={styles.find}>
         <View style={styles.iconInputContainer}>

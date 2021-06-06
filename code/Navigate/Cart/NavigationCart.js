@@ -30,13 +30,13 @@ export default function NavigationCart() {
           headerShown: false,
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="InfoBookScreen"
         component={InfoBookScreen}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }
