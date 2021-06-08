@@ -15,7 +15,7 @@ import * as SecureStore from "expo-secure-store";
 export default function CartCompleted({ navigation }) {
   const [token, setToken] = useState("");
   const [books, setBooks] = useState([
-    { _id: "", store: { name: "", price: "" } },
+    { services: [], _id: "", store: { name: "", price: "" } },
   ]);
   useEffect(() => {
     async function getInformation() {
@@ -76,7 +76,14 @@ export default function CartCompleted({ navigation }) {
   };
   return (
     <SafeAreaView style={{ flex: 1, alignItems: "center" }}>
-      <View style={{ flexDirection: "row", justifyContent: "center" }}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        style={{
+          flexDirection: "row",
+          marginLeft: 12 /*justifyContent: "center"*/,
+        }}
+      >
         <TouchableOpacity
           style={styles.headerContainer3}
           onPress={() => navigation.navigate("CartScreen")}
@@ -92,9 +99,16 @@ export default function CartCompleted({ navigation }) {
         <TouchableOpacity style={styles.headerContainer2}>
           <Text style={styles.textBoxBold}>Completed</Text>
         </TouchableOpacity>
-      </View>
+        <TouchableOpacity
+          style={styles.headerContainer3}
+          onPress={() => navigation.navigate("Review")}
+        >
+          <Text style={styles.textBoxBold}>Reviewed</Text>
+        </TouchableOpacity>
+      </ScrollView>
       <ScrollView showsVerticalScrollIndicator={false}>
         {books.map((book) => (
+          // console.log(books),
           <View style={styles.boxService}>
             <View style={{ width: 172 }}>
               <View style={{ marginBottom: 9 }}>
@@ -107,20 +121,29 @@ export default function CartCompleted({ navigation }) {
                   {new Date(book.schedule).toLocaleDateString("VN")}
                 </Text>
               </View>
-              <View style={{}}>
-                <Text style={styles.text}>
-                  Combo VIP Cat Goi - Goi - Cao rau
-                </Text>
-              </View>
+
+              {book.services.map((e) => (
+                <View style={{ marginBottom: 6 }}>
+                  <Text style={styles.text}>- {e.name}</Text>
+                </View>
+              ))}
             </View>
             <View style={styles.textPrice}>
               <Text style={styles.textBold}>{book.cost / 1000}K</Text>
               <View style={styles.boxCancel}>
                 <Text style={styles.textBoxBold}>Completed</Text>
               </View>
-              <TouchableOpacity style={styles.boxCancel}>
+              <TouchableOpacity
+                //disabled={item.status == "Reviewed" ? true : false}
+                //style={book.status == "Reviewed" ? styles.boxCancelDisable : styles.boxCancel }
+                onPress={() =>
+                  navigation.navigate("ReviewScreen", { id: book._id })
+                }
+                style={styles.boxCancel}
+              >
                 <Text style={styles.textBoxBold}>Review</Text>
               </TouchableOpacity>
+              <Text style={styles.text}>Status: Reviewed</Text>
             </View>
           </View>
         ))}
@@ -175,7 +198,6 @@ const styles = StyleSheet.create({
   },
   boxService: {
     backgroundColor: "#bdc3c7",
-    height: 120,
     width: 345,
     marginTop: 12,
     borderRadius: 8,
@@ -186,11 +208,19 @@ const styles = StyleSheet.create({
   boxCancel: {
     width: 105,
     height: 38,
-    // marginTop: 19,
     marginBottom: 6,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FF6C44",
+    borderRadius: 24,
+  },
+  boxCancelDisable: {
+    width: 105,
+    height: 38,
+    marginBottom: 6,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FF6C4450",
     borderRadius: 24,
   },
 });

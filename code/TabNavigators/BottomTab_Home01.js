@@ -112,7 +112,7 @@ export default function BottomTab_Home01() {
           }}
         />
 
-        <Tab.Screen
+        {/* <Tab.Screen
           name="NotificationScreen"
           component={NotificationScreen}
           options={{
@@ -129,7 +129,7 @@ export default function BottomTab_Home01() {
               }
             },
           }}
-        />
+        /> */}
       </Tab.Navigator>
     </View>
   );
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: 40,
-    minWidth: 90,
+    minWidth: 110,
     paddingHorizontal: 16,
     borderRadius: 20,
     backgroundColor: "#FF6C44",

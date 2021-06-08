@@ -1,5 +1,12 @@
-import React from "react";
-import { StyleSheet, View, SafeAreaView, ScrollView } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  StyleSheet,
+  View,
+  SafeAreaView,
+  ScrollView,
+  Alert,
+  Platform,
+} from "react-native";
 
 import { MaterialCommunityIcons as Icon } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -14,7 +21,129 @@ import Block from "../Home/Component/Block";
 import AdsImage from "../Home/Component/AdsImage";
 import BestSalon from "../Home/Component/BestSalon";
 
+import Constants from "expo-constants";
+import * as Notifications from "expo-notifications";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
 function Home01({ navigation }) {
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState(false);
+  const [token, setToken] = useState("");
+  const notificationListener = useRef();
+  const responseListener = useRef();
+
+  useEffect(() => {
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token)
+    );
+
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(notification);
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log(response);
+      });
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    async function getToken() {
+      let result = await SecureStore.getItemAsync("token");
+      setToken(result);
+    }
+    getToken();
+  })
+  useEffect(() => {
+    const url = "http://149.28.137.174:5000/app/nearestBook";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then(async (result) => {
+        let noti = await SecureStore.getItemAsync("noti");
+        console.log(result)
+        let time = (new Date(result.book.schedule)).getTime() - new Date().getTime()
+        if(!noti.includes(result.book._id)) {
+          await schedulePushNotification(
+            `Lịch hẹn ${result.book.services[0].name} tại ${result.book.store.name}`,
+            `Còn 30 phút là tới lịch hẹn ${result.book.services[0].name}. Vào lúc ${new Date(result.book.schedule)
+              .toTimeString("VN")
+              .slice(0, 5)} - ngày ${new Date(
+                result.book.schedule
+            ).toLocaleDateString("VN")}`, time
+          );
+          if (noti == "" || noti == null)
+            await SecureStore.setItemAsync("noti", result.book._id);
+          else if(!noti.includes(result.book._id)) await SecureStore.setItemAsync("noti", noti + result.book._id);
+        }
+      });
+  }, [notification, token]);
+
+  async function schedulePushNotification(title, body, time) {
+    let second = Math.floor(( time - 60 * 30 * 1000 ) / 1000); 
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: title,
+        body: body,
+        data: { data: "goes here" },
+      },
+      trigger: { seconds: second },
+    });
+  }
+  
+  async function registerForPushNotificationsAsync() {
+    let token;
+    if (Constants.isDevice) {
+      const { status: existingStatus } =
+        await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+      if (finalStatus !== "granted") {
+        alert("Failed to get push token for push notification!");
+        return;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(token);
+    } else {
+      alert("Must use physical device for Push Notifications");
+    }
+  
+    if (Platform.OS === "android") {
+      Notifications.setNotificationChannelAsync("default", {
+        name: "default",
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: "#FF231F7C",
+      });
+    }
+  
+    return token;
+  }
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headerContainer}>
@@ -22,7 +151,7 @@ function Home01({ navigation }) {
           onPress={() => {
             navigation.openDrawer();
           }}
-          navigation={navigation} 
+          navigation={navigation}
         />
       </View>
       <View style={styles.adsContainer}>

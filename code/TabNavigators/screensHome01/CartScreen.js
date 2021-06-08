@@ -113,13 +113,12 @@ export default function CartScreen({ navigation }) {
                 </Text>
               </View>
 
-              {/* <Text style={styles.text}>{services.name}</Text> */}
-
               {book.services.map((e) => (
                 <View style={{ marginBottom: 6 }}>
                   <Text style={styles.text}>- {e.name}</Text>
                 </View>
               ))}
+              
             </TouchableOpacity>
             <View style={styles.textPrice}>
               {/* <Text style={styles.text}>{book.store.price}</Text> */}

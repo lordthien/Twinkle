@@ -15,7 +15,7 @@ import * as SecureStore from "expo-secure-store";
 export default function CartCancel({ navigation }) {
   const [token, setToken] = useState("");
   const [books, setBooks] = useState([
-    { _id: "", store: { name: "", price: "" } },
+    { services: [], _id: "", store: { name: "", price: "" } },
   ]);
   useEffect(() => {
     async function getInformation() {
@@ -94,45 +94,38 @@ export default function CartCancel({ navigation }) {
         </TouchableOpacity>
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {books.map(
-          (book) => (
-            // console.log(book),
-            // console.log("---------"),
-            (
-              <View style={styles.boxService}>
-                <View style={{ width: 172 }}>
-                  <View style={{ marginBottom: 9 }}>
-                    <Text style={styles.textBold}>{book.store.name}</Text>
-                  </View>
-                  <View style={{ marginBottom: 8 }}>
-                    <Text style={styles.text}>
-                      {new Date(book.schedule).toTimeString("VN").slice(0, 5)}
-                      {` - `}
-                      {new Date(book.schedule).toLocaleDateString("VN")}
-                    </Text>
-                  </View>
-                  {/* <View style={{}}>
+        {books.map((book) => (
+          // console.log(book),
+          // console.log("---------"),
+          <View style={styles.boxService}>
+            <View style={{ width: 172 }}>
+              <View style={{ marginBottom: 9 }}>
+                <Text style={styles.textBold}>{book.store.name}</Text>
+              </View>
+              <View style={{ marginBottom: 8 }}>
                 <Text style={styles.text}>
-                  Combo VIP Cat Goi - Goi - Cao rau
+                  {new Date(book.schedule).toTimeString("VN").slice(0, 5)}
+                  {` - `}
+                  {new Date(book.schedule).toLocaleDateString("VN")}
                 </Text>
-              </View> */}
-                  {/* {book.services.map((e) => (
+              </View>
+
+              {book.services.map((e) => (
                 <View style={{ marginBottom: 6 }}>
                   <Text style={styles.text}>- {e.name}</Text>
                 </View>
-              ))} */}
-                </View>
-                <View style={styles.textPrice}>
-                  {/* <Text style={styles.text}>{book.store.price}</Text> */}
-                  <Text style={styles.textBold}>{book.cost / 1000}K</Text>
-                  <View style={styles.boxCancel}>
-                    <Text style={styles.textBoxBold}>Canceled</Text>
-                  </View>
-                </View>
+              ))}
+
+            </View>
+            <View style={styles.textPrice}>
+              {/* <Text style={styles.text}>{book.store.price}</Text> */}
+              <Text style={styles.textBold}>{book.cost / 1000}K</Text>
+              <View style={styles.boxCancel}>
+                <Text style={styles.textBoxBold}>Canceled</Text>
               </View>
-            )
-          )
-        )}
+            </View>
+          </View>
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
@@ -184,7 +177,7 @@ const styles = StyleSheet.create({
   },
   boxService: {
     backgroundColor: "#bdc3c7",
-    height: 107,
+    // height: 107,
     width: 345,
     marginTop: 12,
     borderRadius: 8,

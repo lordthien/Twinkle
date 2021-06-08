@@ -3,7 +3,8 @@ import React from "react";
 import CartScreen from "../../TabNavigators/screensHome01/CartScreen";
 import CartCancel from "../../TabNavigators/screensHome01/ComponentCartScreen/CartCancel";
 import CartCompleted from "../../TabNavigators/screensHome01/ComponentCartScreen/CartCompleted";
-import InfoBookScreen from "../../TabNavigators/screensHome01/ComponentCartScreen/InfoBookScreen/InfoBookScreen";
+import ReviewScreen from "../../TabNavigators/screensHome01/ComponentCartScreen/InfoBookScreen/ReviewScreen";
+// import Review from "../../TabNavigators/screensHome01/ComponentCartScreen/InfoBookScreen/Review";
 
 import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
@@ -30,9 +31,16 @@ export default function NavigationCart() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="ReviewScreen"
+        component={ReviewScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       {/* <Stack.Screen
-        name="InfoBookScreen"
-        component={InfoBookScreen}
+        name="Review"
+        component={Review}
         options={{
           headerShown: false,
         }}

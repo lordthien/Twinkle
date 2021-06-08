@@ -1,8 +1,9 @@
+import React, { useEffect, useState } from "react";
 const image1 = require("../../../../../assets/images/barber1.jpeg");
 const image2 = require("../../../../../assets/images/barber2.jpeg");
 const image3 = require("../../../../../assets/images/barber3.jpeg");
 
-const block = [
+const star = [
   {
     id: 1,
     name: "Barber Shop A Loi",
@@ -33,4 +34,4 @@ const block = [
   },
 ];
 
-export default block;
+export default star;
